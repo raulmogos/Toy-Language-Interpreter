@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67e29585-f100-469c-93eb-6eceacab5982" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/INTERPRETOR.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/Repository/IStateRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/Repository/StateRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/Utils/po.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/View/Veiw.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/controller/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/ProgramState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/execution_stack/ExecutionStack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/execution_stack/IExecutionStack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/expressions/IExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/output/IOutput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/output/Output.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/statements/IStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/symbol_table/ISymbolTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/symbol_table/SymbolTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/symbols/Symbols.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/types/BoolType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/types/IntType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/types/Type.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Toy Language Interpreter/model/values/IValue.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
