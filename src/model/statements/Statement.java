@@ -2,6 +2,6 @@ package model.statements;
 
 import model.ProgramState;
 
-public interface IStatement {
+public interface Statement {
     ProgramState execute(ProgramState state);
 }

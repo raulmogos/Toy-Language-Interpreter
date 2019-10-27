@@ -3,17 +3,17 @@ package model;
 import model.execution_stack.IExecutionStack;
 import model.symbol_table.ISymbolTable;
 import model.output.IOutput;
-import model.statements.IStatement;
-import model.values.IValue;
+import model.statements.Statement;
+import model.values.Value;
 
 public class ProgramState {
 
-    private IExecutionStack<IStatement> statements;
-    private ISymbolTable<String, IValue> symbols;
-    private IOutput<IValue> output;
+    private IExecutionStack<Statement> statements;
+    private ISymbolTable<String, Value> symbols;
+    private IOutput<Value> output;
 
-    ProgramState(IExecutionStack<IStatement> statements, ISymbolTable<String, IValue> symbols,
-                 IOutput<IValue> output, IStatement program)
+    ProgramState(IExecutionStack<Statement> statements, ISymbolTable<String, Value> symbols,
+                 IOutput<Value> output, Statement program)
     {
         this.statements = statements;
         this.symbols = symbols;
@@ -21,27 +21,27 @@ public class ProgramState {
         statements.push(program);
     }
 
-    public IExecutionStack<IStatement> getStatements() {
+    public IExecutionStack<Statement> getStatements() {
         return statements;
     }
 
-    public void setStatements(IExecutionStack<IStatement> statements) {
+    public void setStatements(IExecutionStack<Statement> statements) {
         this.statements = statements;
     }
 
-    public ISymbolTable<String, IValue> getSymbols() {
+    public ISymbolTable<String, Value> getSymbols() {
         return symbols;
     }
 
-    public void setSymbols(ISymbolTable<String, IValue> symbols) {
+    public void setSymbols(ISymbolTable<String, Value> symbols) {
         this.symbols = symbols;
     }
 
-    public IOutput<IValue> getOutput() {
+    public IOutput<Value> getOutput() {
         return output;
     }
 
-    public void setOutput(IOutput<IValue> output) {
+    public void setOutput(IOutput<Value> output) {
         this.output = output;
     }
 
