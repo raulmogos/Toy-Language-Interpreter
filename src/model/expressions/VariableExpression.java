@@ -15,4 +15,9 @@ public class VariableExpression implements Expression {
     public Value evaluate(ISymbolTable<String, Value> symbolTable) {
         return symbolTable.get(symbol);
     }
+
+    @Override
+    public String toString() {
+        return symbol;
+    }
 }

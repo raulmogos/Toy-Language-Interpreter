@@ -7,7 +7,7 @@ public class Output<T> implements IOutput<T> {
     private ArrayList<T> output;
 
     public Output() {
-        output = new ArrayList<T>();
+        output = new ArrayList<>();
     }
 
     @Override
@@ -17,5 +17,10 @@ public class Output<T> implements IOutput<T> {
 
     public ArrayList<T> getOutput() {
         return output;
+    }
+
+    @Override
+    public String toString() {
+        return output.toString();
     }
 }

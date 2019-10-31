@@ -26,11 +26,12 @@ public class Controller {
      public void allStep()
              throws DoesNotExistError, NoMoreStatements, LogicExpressionError, TypeError, DoesAlreadyExist
      {
-        ProgramState currentProgram = stateRepository.getCurrentProgram();
-        while (!currentProgram.getStatements().isEmpty()) {
-            oneStep(currentProgram);
-            System.out.println(currentProgram.toString());
-        }
+         ProgramState currentProgram = stateRepository.getCurrentProgram();
+         System.out.println(currentProgram.toString());
+         while (!currentProgram.getStatements().isEmpty()) {
+             oneStep(currentProgram);
+             System.out.println(currentProgram.toString());
+         }
      }
 
 }

@@ -4,6 +4,7 @@ import model.symbol_table.ISymbolTable;
 import model.values.Value;
 
 public class ValueExpression implements Expression {
+
     private Value value;
 
     public ValueExpression(Value value) {
@@ -13,5 +14,10 @@ public class ValueExpression implements Expression {
     @Override
     public Value evaluate(ISymbolTable<String, Value> symbolTable) {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 }

@@ -24,4 +24,9 @@ public class ExecutionStack<T> implements IExecutionStack<T> {
     public boolean isEmpty() {
         return stack.isEmpty();
     }
+
+    @Override
+    public String toString() {
+        return stack.toString();
+    }
 }

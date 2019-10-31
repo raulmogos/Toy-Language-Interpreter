@@ -24,4 +24,9 @@ public class SymbolTable<S, V> implements ISymbolTable<S, V> {
     public boolean isSymbolInTable(S symbol) {
         return symbolMap.containsKey(symbol);
     }
+
+    @Override
+    public String toString() {
+        return symbolMap.toString();
+    }
 }

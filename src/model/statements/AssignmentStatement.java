@@ -23,8 +23,14 @@ public class AssignmentStatement implements Statement {
         if (!symbolTable.isSymbolInTable(symbol)) throw new DoesNotExistError();
         Value oldValue = symbolTable.get(symbol);
         Value newValue = valueExpression.evaluate(symbolTable);
-        if (newValue.getType() != oldValue.getType()) throw new TypeError("types does not match");
+        if (!newValue.getType().equals(oldValue.getType())) throw new TypeError("types does not match: " +
+                oldValue.getType().toString() + " != " + newValue.getType().toString());
         symbolTable.put(symbol, newValue);
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return symbol + " = " + valueExpression.toString();
     }
 }

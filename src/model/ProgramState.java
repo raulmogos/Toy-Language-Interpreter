@@ -48,10 +48,10 @@ public class  ProgramState {
     @Override
     public String toString() {
 
-        return "ProgramState{" +
-                "statements=" + statements +
-                ", symbols=" + symbols +
-                ", output=" + output +
-                '}';
+        return "\nProgramState {" +
+                "\nstatements:\n\t" + statements.toString() +
+                "\nsymbols:\n\t" + symbols.toString() +
+                "\noutput:\n\t" + output.toString() +
+                "\n}\n";
     }
 }

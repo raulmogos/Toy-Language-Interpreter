@@ -3,6 +3,7 @@ package model.statements;
 import model.ProgramState;
 import model.execution_stack.IExecutionStack;
 import model.expressions.Expression;
+import model.symbols.Symbols;
 import model.types.BoolType;
 import model.types.Type;
 import model.values.BoolValue;
@@ -35,5 +36,11 @@ public class IfStatement implements Statement {
             executionStack.push(elseStatement);
         }
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return Symbols.IF + " (" + expression.toString() + ") " + Symbols.THEN + " { " +thenStatement.toString() +
+                " } " + Symbols.ELSE + " { " + elseStatement.toString() + " } ";
     }
 }

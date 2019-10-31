@@ -21,4 +21,9 @@ public class CompoundStatement implements Statement {
         stack.push(this.firstStatement);
         return state;
     }
+
+    @Override
+    public String toString() {
+        return firstStatement.toString() + " ; " + secondStatement.toString();
+    }
 }

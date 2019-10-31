@@ -1,5 +1,6 @@
 package model.statements;
 
+import model.symbols.Symbols;
 import utils.exceptions.LogicExpressionError;
 import model.ProgramState;
 import model.expressions.Expression;
@@ -19,5 +20,10 @@ public class PrintStatement implements Statement {
         IOutput<Value> output = state.getOutput();
         output.add(expression.evaluate(state.getSymbols()));
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return Symbols.PRINT + "(" + expression.toString() + ")";
     }
 }

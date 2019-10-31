@@ -23,4 +23,9 @@ public class VariableDeclarationStatement implements Statement {
         symbols.put(symbol, type.getDefaultValue());
         return state;
     }
+
+    @Override
+    public String toString() {
+        return type.toString() + " " + symbol;
+    }
 }

@@ -26,4 +26,9 @@ public class ArithmeticExpression implements Expression {
     public Value evaluate(ISymbolTable<String, Value> symbolTable) {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return firstExpression.toString() + " operation " + secondExpression.toString();
+    }
 }

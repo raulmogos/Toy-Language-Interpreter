@@ -38,4 +38,10 @@ public class LogicExpression implements Expression {
             throw new LogicExpressionError("invalid logic expression: you should not use NOT_operator in this case.");
         return null;
     }
+
+    @Override
+    public String toString() {
+//        change this
+        return super.toString();
+    }
 }
