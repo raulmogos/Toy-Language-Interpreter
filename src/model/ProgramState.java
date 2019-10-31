@@ -6,13 +6,13 @@ import model.output.IOutput;
 import model.statements.Statement;
 import model.values.Value;
 
-public class ProgramState {
+public class  ProgramState {
 
     private IExecutionStack<Statement> statements;
     private ISymbolTable<String, Value> symbols;
     private IOutput<Value> output;
 
-    ProgramState(IExecutionStack<Statement> statements, ISymbolTable<String, Value> symbols,
+    public ProgramState(IExecutionStack<Statement> statements, ISymbolTable<String, Value> symbols,
                  IOutput<Value> output, Statement program)
     {
         this.statements = statements;
@@ -47,6 +47,7 @@ public class ProgramState {
 
     @Override
     public String toString() {
+
         return "ProgramState{" +
                 "statements=" + statements +
                 ", symbols=" + symbols +

@@ -7,7 +7,7 @@ public class ExecutionStack<T> implements IExecutionStack<T> {
     private Stack<T> stack;
 
     public ExecutionStack() {
-        this.stack = new Stack<T>();
+        this.stack = new Stack<>();
     }
 
     @Override
@@ -18,5 +18,10 @@ public class ExecutionStack<T> implements IExecutionStack<T> {
     @Override
     public void push(T newObjectT) {
         this.stack.push(newObjectT);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return stack.isEmpty();
     }
 }

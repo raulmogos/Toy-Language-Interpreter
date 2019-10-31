@@ -7,7 +7,7 @@ public class SymbolTable<S, V> implements ISymbolTable<S, V> {
     private HashMap<S, V> symbolMap;
 
     public SymbolTable() {
-        symbolMap = new HashMap<S, V>();
+        symbolMap = new HashMap<>();
     }
 
     @Override
@@ -18,5 +18,10 @@ public class SymbolTable<S, V> implements ISymbolTable<S, V> {
     @Override
     public V get(S symbol) {
         return symbolMap.get(symbol);
+    }
+
+    @Override
+    public boolean isSymbolInTable(S symbol) {
+        return symbolMap.containsKey(symbol);
     }
 }

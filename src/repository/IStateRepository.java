@@ -1,8 +1,8 @@
-package Repository;
+package repository;
 
 import model.ProgramState;
 
 public interface IStateRepository {
-    public void addProgramState(ProgramState programState);
+    void addProgramState(ProgramState programState);
     ProgramState getCurrentProgram();
 }

@@ -1,4 +1,4 @@
-package Repository;
+package repository;
 
 import model.ProgramState;
 
@@ -8,8 +8,8 @@ public class StateRepository implements IStateRepository {
 
     private ArrayList<ProgramState> states;
 
-    StateRepository() {
-        states = new ArrayList<ProgramState>();
+    public StateRepository() {
+        states = new ArrayList<>();
     }
 
     @Override
