@@ -1,6 +1,6 @@
 package model.expressions;
 
-import model.symbol_table.ISymbolTable;
+import utils.collections.map.IMyMap;
 import model.values.Value;
 
 public class ValueExpression implements Expression {
@@ -12,7 +12,7 @@ public class ValueExpression implements Expression {
     }
 
     @Override
-    public Value evaluate(ISymbolTable<String, Value> symbolTable) {
+    public Value evaluate(IMyMap<String, Value> symbolTable) {
         return value;
     }
 

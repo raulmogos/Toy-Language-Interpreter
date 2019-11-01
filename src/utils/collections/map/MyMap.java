@@ -1,12 +1,12 @@
-package model.symbol_table;
+package utils.collections.map;
 
 import java.util.HashMap;
 
-public class SymbolTable<S, V> implements ISymbolTable<S, V> {
+public class MyMap<S, V> implements IMyMap<S, V> {
 
     private HashMap<S, V> symbolMap;
 
-    public SymbolTable() {
+    public MyMap() {
         symbolMap = new HashMap<>();
     }
 

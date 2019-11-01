@@ -1,8 +1,7 @@
 package model.statements;
 
 import model.ProgramState;
-import model.execution_stack.ExecutionStack;
-import model.execution_stack.IExecutionStack;
+import utils.collections.stack.IMyStack;
 
 public class CompoundStatement implements Statement {
 
@@ -16,7 +15,7 @@ public class CompoundStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) {
-        IExecutionStack<Statement> stack = state.getStatements();
+        IMyStack<Statement> stack = state.getExecutionStack();
         stack.push(this.secondStatement);
         stack.push(this.firstStatement);
         return state;

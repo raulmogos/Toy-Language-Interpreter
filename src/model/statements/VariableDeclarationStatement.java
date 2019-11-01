@@ -1,7 +1,7 @@
 package model.statements;
 
 import model.ProgramState;
-import model.symbol_table.ISymbolTable;
+import utils.collections.map.IMyMap;
 import model.types.Type;
 import model.values.Value;
 import utils.exceptions.DoesAlreadyExist;
@@ -18,7 +18,7 @@ public class VariableDeclarationStatement implements Statement {
 
     @Override
     public ProgramState execute(ProgramState state) throws DoesAlreadyExist {
-        ISymbolTable<String, Value> symbols = state.getSymbols();
+        IMyMap<String, Value> symbols = state.getSymbolsTable();
         if (symbols.isSymbolInTable(symbol)) throw new DoesAlreadyExist("this symbol has been declared");
         symbols.put(symbol, type.getDefaultValue());
         return state;

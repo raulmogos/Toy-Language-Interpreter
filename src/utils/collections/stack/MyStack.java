@@ -1,12 +1,12 @@
-package model.execution_stack;
+package utils.collections.stack;
 
 import java.util.Stack;
 
-public class ExecutionStack<T> implements IExecutionStack<T> {
+public class MyStack<T> implements IMyStack<T> {
 
     private Stack<T> stack;
 
-    public ExecutionStack() {
+    public MyStack() {
         this.stack = new Stack<>();
     }
 

@@ -1,11 +1,13 @@
 package model.statements;
 
 import model.symbols.Symbols;
+import utils.exceptions.DivisionByZeroError;
 import utils.exceptions.LogicExpressionError;
 import model.ProgramState;
 import model.expressions.Expression;
-import model.output.IOutput;
+import utils.collections.list.IMyList;
 import model.values.Value;
+import utils.exceptions.TypeError;
 
 public class PrintStatement implements Statement {
 
@@ -16,9 +18,9 @@ public class PrintStatement implements Statement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws LogicExpressionError {
-        IOutput<Value> output = state.getOutput();
-        output.add(expression.evaluate(state.getSymbols()));
+    public ProgramState execute(ProgramState state) throws LogicExpressionError, TypeError, DivisionByZeroError {
+        IMyList<Value> output = state.getOutput();
+        output.add(expression.evaluate(state.getSymbolsTable()));
         return state;
     }
 

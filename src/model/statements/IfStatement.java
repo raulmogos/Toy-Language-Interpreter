@@ -1,13 +1,14 @@
 package model.statements;
 
 import model.ProgramState;
-import model.execution_stack.IExecutionStack;
+import utils.collections.stack.IMyStack;
 import model.expressions.Expression;
 import model.symbols.Symbols;
 import model.types.BoolType;
 import model.types.Type;
 import model.values.BoolValue;
 import model.values.Value;
+import utils.exceptions.DivisionByZeroError;
 import utils.exceptions.LogicExpressionError;
 import utils.exceptions.TypeError;
 
@@ -24,12 +25,12 @@ public class IfStatement implements Statement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws LogicExpressionError, TypeError {
-        Value expressionValue = expression.evaluate(state.getSymbols());
+    public ProgramState execute(ProgramState state) throws LogicExpressionError, TypeError, DivisionByZeroError {
+        Value expressionValue = expression.evaluate(state.getSymbolsTable());
         Type typeOfExpression = expressionValue.getType();
         if (!typeOfExpression.equals(new BoolType())) throw new TypeError("types does not match");
         BoolValue boolValue = (BoolValue) expressionValue;
-        IExecutionStack<Statement> executionStack = state.getStatements();
+        IMyStack<Statement> executionStack = state.getExecutionStack();
         if (boolValue.getValue()) {
             executionStack.push(thenStatement);
         } else {

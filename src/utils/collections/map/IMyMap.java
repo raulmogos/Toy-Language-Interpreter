@@ -1,6 +1,6 @@
-package model.symbol_table;
+package utils.collections.map;
 
-public interface ISymbolTable<S, V> {
+public interface IMyMap<S, V> {
     void put(S symbol, V value);
     V get(S symbol);
     boolean isSymbolInTable(S symbol);

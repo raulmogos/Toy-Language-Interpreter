@@ -1,56 +1,53 @@
 package model;
 
-import model.execution_stack.IExecutionStack;
-import model.symbol_table.ISymbolTable;
-import model.output.IOutput;
-import model.statements.Statement;
 import model.values.Value;
+import model.statements.Statement;
+import utils.collections.map.IMyMap;
+import utils.collections.list.IMyList;
+import utils.collections.stack.IMyStack;
 
 public class  ProgramState {
 
-    private IExecutionStack<Statement> statements;
-    private ISymbolTable<String, Value> symbols;
-    private IOutput<Value> output;
+    private IMyStack<Statement> executionStack;
+    private IMyMap<String, Value> symbolsTable;
+    private IMyList<Value> output;
 
-    public ProgramState(IExecutionStack<Statement> statements, ISymbolTable<String, Value> symbols,
-                 IOutput<Value> output, Statement program)
-    {
-        this.statements = statements;
-        this.symbols = symbols;
+    public ProgramState(IMyStack<Statement> statements, IMyMap<String, Value> symbols, IMyList<Value> output, Statement program) {
+        this.executionStack = statements;
+        this.symbolsTable = symbols;
         this.output = output;
         statements.push(program);
     }
 
-    public IExecutionStack<Statement> getStatements() {
-        return statements;
+    public IMyStack<Statement> getExecutionStack() {
+        return executionStack;
     }
 
-    public void setStatements(IExecutionStack<Statement> statements) {
-        this.statements = statements;
+    public void setExecutionStack(IMyStack<Statement> executionStack) {
+        this.executionStack = executionStack;
     }
 
-    public ISymbolTable<String, Value> getSymbols() {
-        return symbols;
+    public IMyMap<String, Value> getSymbolsTable() {
+        return symbolsTable;
     }
 
-    public void setSymbols(ISymbolTable<String, Value> symbols) {
-        this.symbols = symbols;
+    public void setSymbolsTable(IMyMap<String, Value> symbolsTable) {
+        this.symbolsTable = symbolsTable;
     }
 
-    public IOutput<Value> getOutput() {
+    public IMyList<Value> getOutput() {
         return output;
     }
 
-    public void setOutput(IOutput<Value> output) {
+    public void setOutput(IMyList<Value> output) {
         this.output = output;
     }
 
     @Override
     public String toString() {
-
         return "\nProgramState {" +
-                "\nstatements:\n\t" + statements.toString() +
-                "\nsymbols:\n\t" + symbols.toString() +
+                "\nstatements:\n\t" + executionStack.toString() +
+                "\nsymbols:\n\t" + symbolsTable.toString() +
                 "\noutput:\n\t" + output.toString() +
                 "\n}\n";
     }

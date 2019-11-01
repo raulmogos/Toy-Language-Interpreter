@@ -1,9 +1,11 @@
 package model.expressions;
 
+import utils.exceptions.DivisionByZeroError;
 import utils.exceptions.LogicExpressionError;
-import model.symbol_table.ISymbolTable;
+import utils.collections.map.IMyMap;
 import model.values.Value;
+import utils.exceptions.TypeError;
 
 public interface Expression {
-    Value evaluate(ISymbolTable<String, Value> symbolTable) throws LogicExpressionError;
+    Value evaluate(IMyMap<String, Value> symbolTable) throws LogicExpressionError, TypeError, DivisionByZeroError;
 }

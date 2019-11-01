@@ -1,13 +1,13 @@
 import controller.Controller;
 import model.ProgramState;
-import model.execution_stack.ExecutionStack;
-import model.execution_stack.IExecutionStack;
-import model.output.IOutput;
-import model.output.Output;
+import utils.collections.stack.MyStack;
+import utils.collections.stack.IMyStack;
+import utils.collections.list.IMyList;
+import utils.collections.list.MyList;
 import model.programs.HardCodedPrograms;
 import model.statements.Statement;
-import model.symbol_table.ISymbolTable;
-import model.symbol_table.SymbolTable;
+import utils.collections.map.IMyMap;
+import utils.collections.map.MyMap;
 import model.values.Value;
 import repository.IStateRepository;
 import repository.StateRepository;
@@ -19,14 +19,20 @@ public class Main {
         IStateRepository repo = new StateRepository();
         Controller ctrl = new Controller(repo);
 
-        Statement program = HardCodedPrograms.getProgramByIndex(1);
+        try {
 
+            Statement program = HardCodedPrograms.getProgramByIndex(2);
 
-        IExecutionStack<Statement> statements = new ExecutionStack<>();
-        ISymbolTable<String, Value > symbols = new SymbolTable<>();
-        IOutput<Value> output = new Output<>();
+            IMyStack<Statement> statements = new MyStack<>();
+            IMyMap<String, Value > symbols = new MyMap<>();
+            IMyList<Value> output = new MyList<>();
 
-        repo.addProgramState(new ProgramState(statements, symbols, output, program));
+            repo.addProgramState(new ProgramState(statements, symbols, output, program));
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
 
         try {
             ctrl.allStep();
