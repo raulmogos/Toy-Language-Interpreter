@@ -1,6 +1,6 @@
 package utils.exceptions;
 
-public class LogicExpressionError extends Exception {
+public class LogicExpressionError extends RuntimeException {
     public LogicExpressionError() {
     }
 
