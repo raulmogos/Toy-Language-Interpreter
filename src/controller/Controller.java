@@ -14,8 +14,7 @@ public class Controller {
         this.stateRepository = stateRepository;
     }
 
-     private void oneStep(ProgramState programState) throws NoMoreStatements, TypeError,
-             LogicExpressionError, DoesNotExistError, DoesAlreadyExist, DivisionByZeroError {
+     private void oneStep(ProgramState programState) {
         IMyStack<Statement> statements = programState.getExecutionStack();
         if (statements.isEmpty()) {
             throw new NoMoreStatements("no more statements: execution stack is empty");
@@ -24,14 +23,17 @@ public class Controller {
         currentStatement.execute(programState);
      }
 
-     public void allStep() throws DoesNotExistError, NoMoreStatements,
-             LogicExpressionError, TypeError, DoesAlreadyExist, DivisionByZeroError {
+     public void allStep() {
          ProgramState currentProgram = stateRepository.getCurrentProgram();
          System.out.println(currentProgram.toString());
          while (!currentProgram.getExecutionStack().isEmpty()) {
              oneStep(currentProgram);
              System.out.println(currentProgram.toString());
          }
+     }
+
+     public void addProgram(ProgramState programState) {
+        stateRepository.addProgramState(programState);
      }
 
 }

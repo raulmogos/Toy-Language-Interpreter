@@ -2,7 +2,6 @@ package model.expressions;
 
 import model.types.BoolType;
 import model.values.BoolValue;
-import utils.exceptions.DivisionByZeroError;
 import utils.exceptions.LogicExpressionError;
 import utils.collections.map.IMyMap;
 import model.values.Value;
@@ -35,7 +34,7 @@ public class LogicExpression implements Expression {
     }
 
     @Override
-    public Value evaluate(IMyMap<String, Value> symbolTable) throws LogicExpressionError, TypeError, DivisionByZeroError {
+    public Value evaluate(IMyMap<String, Value> symbolTable) {
         if (isSingleExpression) {
             if (operation != Operations.NOT)
                 throw new LogicExpressionError("invalid logic expression: you should use NOT_operator in this case.");

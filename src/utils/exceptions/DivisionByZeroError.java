@@ -1,6 +1,6 @@
 package utils.exceptions;
 
-public class DivisionByZeroError extends Exception {
+public class DivisionByZeroError extends RuntimeException {
     public DivisionByZeroError() {
     }
 

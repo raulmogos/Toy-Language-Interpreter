@@ -5,7 +5,6 @@ import model.values.IntValue;
 import utils.collections.map.IMyMap;
 import model.values.Value;
 import utils.exceptions.DivisionByZeroError;
-import utils.exceptions.LogicExpressionError;
 import utils.exceptions.TypeError;
 
 public class ArithmeticExpression implements Expression {
@@ -28,7 +27,7 @@ public class ArithmeticExpression implements Expression {
     }
 
     @Override
-    public Value evaluate(IMyMap<String, Value> symbolTable) throws LogicExpressionError, TypeError, DivisionByZeroError {
+    public Value evaluate(IMyMap<String, Value> symbolTable) {
 
         Value valueFirstExpression = firstExpression.evaluate(symbolTable);
         Value valueSecondExpression = secondExpression.evaluate(symbolTable);

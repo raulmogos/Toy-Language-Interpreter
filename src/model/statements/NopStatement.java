@@ -4,8 +4,7 @@ import model.ProgramState;
 
 public class NopStatement implements Statement {
     @Override
-    public ProgramState execute(ProgramState state) {
-        return state;
+    public void execute(ProgramState state) {
     }
 
     @Override

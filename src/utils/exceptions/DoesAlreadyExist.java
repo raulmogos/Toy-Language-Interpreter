@@ -1,6 +1,6 @@
 package utils.exceptions;
 
-public class DoesAlreadyExist extends Exception {
+public class DoesAlreadyExist extends RuntimeException {
     public DoesAlreadyExist() {
     }
 

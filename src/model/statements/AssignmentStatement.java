@@ -1,12 +1,10 @@
 package model.statements;
 
-import utils.exceptions.DivisionByZeroError;
 import utils.exceptions.DoesNotExistError;
 import model.ProgramState;
 import model.expressions.Expression;
 import utils.collections.map.IMyMap;
 import model.values.Value;
-import utils.exceptions.LogicExpressionError;
 import utils.exceptions.TypeError;
 
 public class AssignmentStatement implements Statement {
@@ -20,15 +18,14 @@ public class AssignmentStatement implements Statement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws DoesNotExistError, TypeError, LogicExpressionError, DivisionByZeroError {
+    public void execute(ProgramState state) {
         IMyMap<String, Value> symbolTable = state.getSymbolsTable();
         if (!symbolTable.isSymbolInTable(symbol)) throw new DoesNotExistError();
         Value oldValue = symbolTable.get(symbol);
         Value newValue = expression.evaluate(symbolTable);
-        if (!newValue.getType().equals(oldValue.getType())) throw new TypeError("types does not match: " +
+        if (!newValue.getType().equals(oldValue.getType())) throw new TypeError("types do not match: " +
                 oldValue.getType().toString() + " != " + newValue.getType().toString());
         symbolTable.put(symbol, newValue);
-        return state;
     }
 
     @Override

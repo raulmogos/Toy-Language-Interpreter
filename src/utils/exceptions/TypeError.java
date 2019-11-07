@@ -1,6 +1,6 @@
 package utils.exceptions;
 
-public class TypeError extends Exception {
+public class TypeError extends RuntimeException {
     public TypeError() {
     }
 

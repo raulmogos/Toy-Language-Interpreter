@@ -1,6 +1,6 @@
 package utils.exceptions;
 
-public class NoMoreStatements extends Exception {
+public class NoMoreStatements extends RuntimeException {
     public NoMoreStatements() {
     }
 

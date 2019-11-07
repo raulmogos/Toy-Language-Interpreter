@@ -23,32 +23,20 @@ public class  ProgramState {
         return executionStack;
     }
 
-    public void setExecutionStack(IMyStack<Statement> executionStack) {
-        this.executionStack = executionStack;
-    }
-
     public IMyMap<String, Value> getSymbolsTable() {
         return symbolsTable;
-    }
-
-    public void setSymbolsTable(IMyMap<String, Value> symbolsTable) {
-        this.symbolsTable = symbolsTable;
     }
 
     public IMyList<Value> getOutput() {
         return output;
     }
 
-    public void setOutput(IMyList<Value> output) {
-        this.output = output;
-    }
-
     @Override
     public String toString() {
         return "\nProgramState {" +
-                "\nstatements:\n\t" + executionStack.toString() +
-                "\nsymbols:\n\t" + symbolsTable.toString() +
-                "\noutput:\n\t" + output.toString() +
+                "\n\tstatements:\n\t\t" + executionStack.toString() +
+                "\n\tsymbols:\n\t\t" + symbolsTable.toString() +
+                "\n\toutput:\n\t\t" + output.toString() +
                 "\n}\n";
     }
 }

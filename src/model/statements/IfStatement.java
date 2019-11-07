@@ -8,8 +8,6 @@ import model.types.BoolType;
 import model.types.Type;
 import model.values.BoolValue;
 import model.values.Value;
-import utils.exceptions.DivisionByZeroError;
-import utils.exceptions.LogicExpressionError;
 import utils.exceptions.TypeError;
 
 public class IfStatement implements Statement {
@@ -25,10 +23,11 @@ public class IfStatement implements Statement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws LogicExpressionError, TypeError, DivisionByZeroError {
+    public void execute(ProgramState state) {
         Value expressionValue = expression.evaluate(state.getSymbolsTable());
         Type typeOfExpression = expressionValue.getType();
-        if (!typeOfExpression.equals(new BoolType())) throw new TypeError("types does not match");
+        if (!typeOfExpression.equals(new BoolType()))
+            throw new TypeError("types does not match");
         BoolValue boolValue = (BoolValue) expressionValue;
         IMyStack<Statement> executionStack = state.getExecutionStack();
         if (boolValue.getValue()) {
@@ -36,7 +35,6 @@ public class IfStatement implements Statement {
         } else {
             executionStack.push(elseStatement);
         }
-        return state;
     }
 
     @Override

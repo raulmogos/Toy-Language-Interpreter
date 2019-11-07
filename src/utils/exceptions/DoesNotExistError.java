@@ -1,6 +1,6 @@
 package utils.exceptions;
 
-public class DoesNotExistError extends Exception {
+public class DoesNotExistError extends RuntimeException {
     public DoesNotExistError() {
     }
 
