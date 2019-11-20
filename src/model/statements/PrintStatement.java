@@ -2,7 +2,7 @@ package model.statements;
 
 import model.values.Value;
 import model.ProgramState;
-import model.symbols.Symbols;
+import syntax.Symbols;
 import model.expressions.Expression;
 import utils.collections.list.IMyList;
 

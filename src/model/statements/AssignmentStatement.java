@@ -20,7 +20,7 @@ public class AssignmentStatement implements Statement {
     @Override
     public void execute(ProgramState state) {
         IMyMap<String, Value> symbolTable = state.getSymbolsTable();
-        if (!symbolTable.isSymbolInTable(symbol)) throw new DoesNotExistError();
+        if (!symbolTable.isKeyInMap(symbol)) throw new DoesNotExistError();
         Value oldValue = symbolTable.get(symbol);
         Value newValue = expression.evaluate(symbolTable);
         if (!newValue.getType().equals(oldValue.getType())) throw new TypeError("types do not match: " +

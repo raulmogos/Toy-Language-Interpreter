@@ -17,7 +17,7 @@ public class Controller {
      private void oneStep(ProgramState programState) {
         IMyStack<Statement> statements = programState.getExecutionStack();
         if (statements.isEmpty()) {
-            throw new NoMoreStatements("no more statements: execution stack is empty");
+            throw new NoMoreStatementsError("no more statements: execution stack is empty");
         }
         Statement currentStatement = statements.pop();
         currentStatement.execute(programState);
@@ -25,10 +25,10 @@ public class Controller {
 
      public void allStep() {
          ProgramState currentProgram = stateRepository.getCurrentProgram();
-         System.out.println(currentProgram.toString());
+         stateRepository.logCurrentProgramStateExecution();
          while (!currentProgram.getExecutionStack().isEmpty()) {
              oneStep(currentProgram);
-             System.out.println(currentProgram.toString());
+             stateRepository.logCurrentProgramStateExecution();
          }
      }
 

@@ -1,6 +1,6 @@
 package model.types;
 
-import model.symbols.Symbols;
+import syntax.Symbols;
 import model.values.IntValue;
 import model.values.Value;
 

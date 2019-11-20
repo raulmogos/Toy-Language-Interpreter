@@ -1,0 +1,154 @@
+2019/11/20 20:36:54
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int a ; int b ; a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int a
+int b ; a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int b ; a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+a -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int b
+a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+a -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+a -> 0
+b -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+a = 2
+b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+a -> 0
+b -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+a -> 2
+b -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+b = 3
+IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+a -> 2
+b -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+
+SYMBOLS:
+a -> 2
+b -> 3
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(b)
+
+SYMBOLS:
+a -> 2
+b -> 3
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+
+SYMBOLS:
+a -> 2
+b -> 3
+
+OUTPUT:
+3
+
+FILE TABLE:
+
+
+

@@ -4,7 +4,7 @@ import model.ProgramState;
 import utils.collections.map.IMyMap;
 import model.types.Type;
 import model.values.Value;
-import utils.exceptions.DoesAlreadyExist;
+import utils.exceptions.DoesAlreadyExistError;
 
 public class VariableDeclarationStatement implements Statement {
 
@@ -19,7 +19,7 @@ public class VariableDeclarationStatement implements Statement {
     @Override
     public void execute(ProgramState state) {
         IMyMap<String, Value> symbols = state.getSymbolsTable();
-        if (symbols.isSymbolInTable(symbol)) throw new DoesAlreadyExist("this symbol has been declared");
+        if (symbols.isKeyInMap(symbol)) throw new DoesAlreadyExistError("this symbol has been declared");
         symbols.put(symbol, type.getDefaultValue());
     }
 

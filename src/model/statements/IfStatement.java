@@ -3,7 +3,7 @@ package model.statements;
 import model.ProgramState;
 import utils.collections.stack.IMyStack;
 import model.expressions.Expression;
-import model.symbols.Symbols;
+import syntax.Symbols;
 import model.types.BoolType;
 import model.types.Type;
 import model.values.BoolValue;

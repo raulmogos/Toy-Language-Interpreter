@@ -1,6 +1,8 @@
 package utils.collections.map;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MyMap<S, V> implements IMyMap<S, V> {
 
@@ -21,12 +23,27 @@ public class MyMap<S, V> implements IMyMap<S, V> {
     }
 
     @Override
-    public boolean isSymbolInTable(S symbol) {
+    public V remove(S key) {
+         return symbolMap.remove(key);
+    }
+
+    @Override
+    public boolean isKeyInMap(S symbol) {
         return symbolMap.containsKey(symbol);
     }
 
     @Override
+    public Set<S> keySet() {
+        return symbolMap.keySet();
+    }
+
+    @Override
     public String toString() {
-        return symbolMap.toString();
+        StringBuilder string = new StringBuilder();
+        for (Map.Entry me : symbolMap.entrySet()) {
+            string.append(me.getKey().toString()).append(" -> ").append(me.getValue().toString());
+            string.append("\n");
+        }
+        return string.toString();
     }
 }

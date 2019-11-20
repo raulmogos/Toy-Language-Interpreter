@@ -1,0 +1,155 @@
+2019/11/20 20:36:54
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+bool a ; int v ; a = true ; IF (a) THEN { v = 2 } ELSE { v = 3 }  ; PRINT(v)
+
+SYMBOLS:
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+bool a
+int v ; a = true ; IF (a) THEN { v = 2 } ELSE { v = 3 }  ; PRINT(v)
+
+SYMBOLS:
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int v ; a = true ; IF (a) THEN { v = 2 } ELSE { v = 3 }  ; PRINT(v)
+
+SYMBOLS:
+a -> false
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int v
+a = true ; IF (a) THEN { v = 2 } ELSE { v = 3 }  ; PRINT(v)
+
+SYMBOLS:
+a -> false
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+a = true ; IF (a) THEN { v = 2 } ELSE { v = 3 }  ; PRINT(v)
+
+SYMBOLS:
+a -> false
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+a = true
+IF (a) THEN { v = 2 } ELSE { v = 3 }  ; PRINT(v)
+
+SYMBOLS:
+a -> false
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+IF (a) THEN { v = 2 } ELSE { v = 3 }  ; PRINT(v)
+
+SYMBOLS:
+a -> true
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+IF (a) THEN { v = 2 } ELSE { v = 3 } 
+PRINT(v)
+
+SYMBOLS:
+a -> true
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = 2
+PRINT(v)
+
+SYMBOLS:
+a -> true
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+
+SYMBOLS:
+a -> true
+v -> 2
+
+OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+
+SYMBOLS:
+a -> true
+v -> 2
+
+OUTPUT:
+2
+
+FILE TABLE:
+
+
+

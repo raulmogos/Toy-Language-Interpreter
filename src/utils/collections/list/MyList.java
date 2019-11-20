@@ -1,6 +1,7 @@
 package utils.collections.list;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class MyList<T> implements IMyList<T> {
 
@@ -8,6 +9,10 @@ public class MyList<T> implements IMyList<T> {
 
     public MyList() {
         list = new ArrayList<>();
+    }
+
+    public MyList(Set<T> set) {
+        list = new ArrayList<>(set);
     }
 
     @Override
@@ -20,12 +25,17 @@ public class MyList<T> implements IMyList<T> {
     }
 
     @Override
-    public String toString() {
-        return list.toString();
+    public T get(int i) {
+        return list.get(i);
     }
 
     @Override
-    public T get(int i) {
-        return list.get(i);
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        for (T item: list) {
+            string.append(item.toString());
+            string.append('\n');
+        }
+        return string.toString();
     }
 }

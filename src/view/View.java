@@ -2,9 +2,10 @@ package view;
 
 import controller.Controller;
 import model.ProgramState;
-import model.programs.HardCodedPrograms;
-import model.programs.Programs;
+import resources.in.programs.HardCodedPrograms;
+import resources.in.programs.Programs;
 import model.statements.Statement;
+import model.values.StringValue;
 import model.values.Value;
 import utils.collections.list.IMyList;
 import utils.collections.list.MyList;
@@ -13,6 +14,7 @@ import utils.collections.map.MyMap;
 import utils.collections.stack.IMyStack;
 import utils.collections.stack.MyStack;
 
+import java.io.BufferedReader;
 import java.util.Scanner;
 
 public class View {
@@ -33,7 +35,8 @@ public class View {
             IMyStack<Statement> statements = new MyStack<>();
             IMyMap<String, Value> symbols = new MyMap<>();
             IMyList<Value> output = new MyList<>();
-            controller.addProgram(new ProgramState(statements, symbols, output, program));
+            IMyMap<StringValue, BufferedReader> fileTable = new MyMap<>();
+            controller.addProgram(new ProgramState(statements, symbols, output, fileTable, program));
             controller.allStep();
         } catch (Exception e) {
             System.out.println(e.getMessage());

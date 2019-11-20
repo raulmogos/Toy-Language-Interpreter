@@ -1,6 +1,6 @@
 package utils.collections.stack;
 
-import java.util.Stack;
+import java.util.*;
 
 public class MyStack<T> implements IMyStack<T> {
 
@@ -27,6 +27,13 @@ public class MyStack<T> implements IMyStack<T> {
 
     @Override
     public String toString() {
-        return stack.toString();
+        StringBuilder string = new StringBuilder();
+        Object[] stackArray = (stack.toArray());
+        Collections.reverse(Arrays.asList(stackArray));
+        for (Object item: stackArray) {
+            string.append(item.toString());
+            string.append('\n');
+        }
+        return string.toString();
     }
 }
