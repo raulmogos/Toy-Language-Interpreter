@@ -51,11 +51,14 @@ public class ReadFile implements Statement {
         String line;
         try {
             line = bufferedReader.readLine();
+            if (line == null) {
+                symbolsTable.put(this.variableName, new IntValue(0));
+            } else {
+                symbolsTable.put(this.variableName, new IntValue(Integer.parseInt(line)));
+            }
         } catch (IOException error) {
             throw new IOError(error.getMessage());
         }
-
-        symbolsTable.put(this.variableName, new IntValue(Integer.parseInt(line)));
     }
 
     @Override

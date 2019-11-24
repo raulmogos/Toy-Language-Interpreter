@@ -1,20 +1,20 @@
 package resources.in.programs;
 
-import model.expressions.relational_expressions.IsGreaterThanRelationalExpression;
-import model.statements.*;
+import model.expressions.relational_expressions.IsLessThanRelationalExpression;
+import model.expressions.ArithmeticExpression;
+import model.expressions.VariableExpression;
+import model.expressions.ValueExpression;
+import model.values.StringValue;
+import model.values.BoolValue;
+import model.types.StringType;
+import model.values.IntValue;
 import model.types.BoolType;
 import model.types.IntType;
-import model.types.StringType;
-import model.values.BoolValue;
-import model.values.IntValue;
-import model.expressions.ValueExpression;
-import model.expressions.VariableExpression;
-import model.expressions.ArithmeticExpression;
-import model.values.StringValue;
+import model.statements.*;
 
 public class Programs {
 
-    private static final String TOY_LANG_PATH_PREFIX = "src\\resources\\in\\programs\\toy_lang_files\\";
+    private static final String TOY_LANG_PATH_PREFIX = "src\\resources\\in\\toy_lang_files\\";
     public static int NUMBER_OF_PROGRAMS = 5;
 
     // int v; v=2; PRINT(v)
@@ -76,14 +76,14 @@ public class Programs {
     );
 
 
-// TODO !
-// CREATE A FUNCTION THAT TAKES AS INPUT ALL THE STATEMENTS AND GIVES YOU
-// BACK THE HOLE PROGRAM WITH COMPOUND STATEMENTS
-//
-//    new Statement[] {
-//            new VariableDeclarationStatement(),
-//            new VariableDeclarationStatement()
-//    }
+    // TODO !
+    // CREATE A FUNCTION THAT TAKES AS INPUT ALL THE STATEMENTS AND GIVES YOU
+    // BACK THE HOLE PROGRAM WITH COMPOUND STATEMENTS
+    //
+    //    new Statement[] {
+    //            new VariableDeclarationStatement(),
+    //            new VariableDeclarationStatement()
+    //    }
     // bool a; int v; a=true;(If a Then v=2 Else v=3);Print(v)
     public static Statement program_3 = new CompoundStatement(
             new VariableDeclarationStatement(
@@ -118,13 +118,13 @@ public class Programs {
             )
     );
 
-//    string line;
-//    line="test.in";
-//    openRFile(line);
-//    int output;
-//    readFile(line,output);print(output);
-//    readFile(line,output);print(output)
-//    closeRFile(line)
+    //    string line;
+    //    line="test.in";
+    //    openRFile(line);
+    //    int output;
+    //    readFile(line,output);print(output);
+    //    readFile(line,output);print(output)
+    //    closeRFile(line)
     public static Statement program_4 = new CompoundStatement(
             new VariableDeclarationStatement(
                     "line",
@@ -174,7 +174,7 @@ public class Programs {
             )
     );
 
-    // int a; int b; a=2, b=3, if(a>b) then print(a) else print(b)
+    // int a; int b; a=2, b=3, if(a<b) then print(a) else print(b)
     public static Statement program_5 = new CompoundStatement(
             new VariableDeclarationStatement(
                     "a",
@@ -196,7 +196,7 @@ public class Programs {
                                             new ValueExpression(new IntValue(3))
                                     ),
                                     new IfStatement(
-                                            new IsGreaterThanRelationalExpression(
+                                            new IsLessThanRelationalExpression(
                                                     new VariableExpression("a"),
                                                     new VariableExpression("b")
                                             ),

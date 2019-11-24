@@ -1,8 +1,8 @@
-2019/11/20 20:36:54
+2019/11/24 19:57:02
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-int a ; int b ; a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+int a ; int b ; a = 2 ; b = 3 ; IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 
@@ -15,7 +15,7 @@ FILE TABLE:
 ----------------------------------------------------------------------------------
 STATEMENTS:
 int a
-int b ; a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+int b ; a = 2 ; b = 3 ; IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 
@@ -27,7 +27,7 @@ FILE TABLE:
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-int b ; a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+int b ; a = 2 ; b = 3 ; IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 a -> 0
@@ -41,7 +41,7 @@ FILE TABLE:
 ----------------------------------------------------------------------------------
 STATEMENTS:
 int b
-a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+a = 2 ; b = 3 ; IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 a -> 0
@@ -54,7 +54,7 @@ FILE TABLE:
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-a = 2 ; b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+a = 2 ; b = 3 ; IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 a -> 0
@@ -69,7 +69,7 @@ FILE TABLE:
 ----------------------------------------------------------------------------------
 STATEMENTS:
 a = 2
-b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+b = 3 ; IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 a -> 0
@@ -83,7 +83,7 @@ FILE TABLE:
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-b = 3 ; IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+b = 3 ; IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 a -> 2
@@ -98,7 +98,7 @@ FILE TABLE:
 ----------------------------------------------------------------------------------
 STATEMENTS:
 b = 3
-IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 a -> 2
@@ -112,7 +112,7 @@ FILE TABLE:
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-IF (a>b) THEN { PRINT(a) } ELSE { PRINT(b) } 
+IF (a<b) THEN { PRINT(a) } ELSE { PRINT(b) } 
 
 SYMBOLS:
 a -> 2
@@ -126,7 +126,7 @@ FILE TABLE:
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-PRINT(b)
+PRINT(a)
 
 SYMBOLS:
 a -> 2
@@ -146,7 +146,7 @@ a -> 2
 b -> 3
 
 OUTPUT:
-3
+2
 
 FILE TABLE:
 

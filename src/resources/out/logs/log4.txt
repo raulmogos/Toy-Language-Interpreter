@@ -1,8 +1,8 @@
-2019/11/20 20:36:54
+2019/11/24 19:57:02
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-string line ; line = "src\resources\in\programs\toy_lang_files\test.in" ; openFile(line) ; int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
+string line ; line = "src\resources\in\toy_lang_files\test.in" ; openFile(line) ; int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
 
 SYMBOLS:
 
@@ -15,7 +15,7 @@ FILE TABLE:
 ----------------------------------------------------------------------------------
 STATEMENTS:
 string line
-line = "src\resources\in\programs\toy_lang_files\test.in" ; openFile(line) ; int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
+line = "src\resources\in\toy_lang_files\test.in" ; openFile(line) ; int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
 
 SYMBOLS:
 
@@ -27,7 +27,7 @@ FILE TABLE:
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-line = "src\resources\in\programs\toy_lang_files\test.in" ; openFile(line) ; int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
+line = "src\resources\in\toy_lang_files\test.in" ; openFile(line) ; int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
 
 SYMBOLS:
 line -> ""
@@ -40,7 +40,7 @@ FILE TABLE:
 
 ----------------------------------------------------------------------------------
 STATEMENTS:
-line = "src\resources\in\programs\toy_lang_files\test.in"
+line = "src\resources\in\toy_lang_files\test.in"
 openFile(line) ; int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
 
 SYMBOLS:
@@ -57,7 +57,7 @@ STATEMENTS:
 openFile(line) ; int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
 
 SYMBOLS:
-line -> "src\resources\in\programs\toy_lang_files\test.in"
+line -> "src\resources\in\toy_lang_files\test.in"
 
 OUTPUT:
 
@@ -71,9 +71,198 @@ openFile(line)
 int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
 
 SYMBOLS:
-line -> "src\resources\in\programs\toy_lang_files\test.in"
+line -> "src\resources\in\toy_lang_files\test.in"
 
 OUTPUT:
+
+FILE TABLE:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int output ; readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int output
+readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+readFile(line, output) ; PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+output -> 0
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+readFile(line, output)
+PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+output -> 0
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(output) ; readFile(line, output) ; PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+output -> 15
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(output)
+readFile(line, output) ; PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+output -> 15
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+readFile(line, output) ; PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+output -> 15
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+15
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+readFile(line, output)
+PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+output -> 15
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+15
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(output) ; closeFile(line)
+
+SYMBOLS:
+output -> 50
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+15
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(output)
+closeFile(line)
+
+SYMBOLS:
+output -> 50
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+15
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+closeFile(line)
+
+SYMBOLS:
+output -> 50
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+15
+50
+
+FILE TABLE:
+"src\resources\in\toy_lang_files\test.in"
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+
+SYMBOLS:
+output -> 50
+line -> "src\resources\in\toy_lang_files\test.in"
+
+OUTPUT:
+15
+50
 
 FILE TABLE:
 
