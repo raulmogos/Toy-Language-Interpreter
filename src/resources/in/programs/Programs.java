@@ -1,9 +1,12 @@
 package resources.in.programs;
 
+import model.expressions.ReadHeapExpression;
+import model.expressions.relational_expressions.IsGreaterThanRelationalExpression;
 import model.expressions.relational_expressions.IsLessThanRelationalExpression;
 import model.expressions.ArithmeticExpression;
 import model.expressions.VariableExpression;
 import model.expressions.ValueExpression;
+import model.types.RefType;
 import model.values.StringValue;
 import model.values.BoolValue;
 import model.types.StringType;
@@ -15,7 +18,7 @@ import model.statements.*;
 public class Programs {
 
     private static final String TOY_LANG_PATH_PREFIX = "src\\resources\\in\\toy_lang_files\\";
-    public static int NUMBER_OF_PROGRAMS = 5;
+    public static int NUMBER_OF_PROGRAMS = 7;
 
     // int v; v=2; PRINT(v)
     public static Statement program_1 = new CompoundStatement(
@@ -207,6 +210,193 @@ public class Programs {
                                                     new VariableExpression("b")
                                             )
                                     )
+                            )
+                    )
+            )
+    );
+
+    // Ref int v;new(v,20);Ref Ref int a; new(a,v);print(v);print(a)
+    public static Statement program_6 = new CompoundStatement(
+            new VariableDeclarationStatement(
+                    "v",
+                    new RefType(new IntType())
+            ),
+            new CompoundStatement(
+                    new NewStatement(
+                            "v",
+                            new ValueExpression(new IntValue(20))
+                    ),
+                    new CompoundStatement(
+                            new VariableDeclarationStatement(
+                                    "a",
+                                    new RefType(new RefType(new IntType()))
+                            ),
+                            new CompoundStatement(
+                                    new NewStatement(
+                                            "a",
+                                            new VariableExpression("v")
+                                    ),
+                                    new CompoundStatement(
+                                        new PrintStatement(new VariableExpression("v")),
+                                        new PrintStatement(new VariableExpression("a"))
+                                    )
+                            )
+                    )
+            )
+    );
+
+    // Ref int v; new(v,20); Ref Ref int a; new(a,v); print(readHeap(v)); print(readHeap(readHeap(a))+5)
+    public static Statement program_7 = new CompoundStatement(
+            new VariableDeclarationStatement(
+                    "v",
+                    new RefType(new IntType())
+            ),
+            new CompoundStatement(
+                    new NewStatement(
+                            "v",
+                            new ValueExpression(new IntValue(20))
+                    ),
+                    new CompoundStatement(
+                            new VariableDeclarationStatement(
+                                    "a",
+                                    new RefType(new RefType(new IntType()))
+                            ),
+                            new CompoundStatement(
+                                    new NewStatement(
+                                            "a",
+                                            new VariableExpression("v")
+                                    ),
+                                    new CompoundStatement(
+                                            new PrintStatement(
+                                                    new ReadHeapExpression(
+                                                            new VariableExpression("v")
+                                                    )
+                                            ),
+                                            new PrintStatement(
+                                                    new ArithmeticExpression(
+                                                            ArithmeticExpression.Operations.PLUS,
+                                                            new ReadHeapExpression(
+                                                                new ReadHeapExpression(
+                                                                        new VariableExpression("a")
+                                                                )
+                                                            ),
+                                                            new ValueExpression(new IntValue(5))
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+            )
+    );
+
+    // Ref int v; new(v,20); print(rH(v)); wH(v,30); print(rH(v)+5);
+    public static Statement program_8 = new CompoundStatement(
+            new VariableDeclarationStatement(
+                    "v",
+                    new RefType(new IntType())
+            ),
+            new CompoundStatement(
+                    new NewStatement(
+                            "v",
+                            new ValueExpression(new IntValue(20))
+                    ),
+                    new CompoundStatement(
+                            new PrintStatement(
+                                    new ReadHeapExpression(
+                                            new VariableExpression("v")
+                                    )
+                            ),
+                            new CompoundStatement(
+                                    new WriteHeapStatement(
+                                            "v",
+                                            new ValueExpression(new IntValue(30))
+                                    ),
+                                    new PrintStatement(
+                                            new ArithmeticExpression(
+                                                    ArithmeticExpression.Operations.PLUS,
+                                                    new ReadHeapExpression(
+                                                            new VariableExpression("v")
+                                                    ),
+                                                    new ValueExpression(new IntValue(5))
+                                            )
+                                    )
+                            )
+                    )
+            )
+    );
+
+    // Ref int v; new(v,20); Ref Ref int a; new(a,v); new(v,30); print(rH(rH(a)))
+    public static Statement program_9 = new CompoundStatement(
+            new VariableDeclarationStatement(
+                    "v",
+                    new RefType(new IntType())
+            ),
+            new CompoundStatement(
+                    new NewStatement(
+                            "v",
+                            new ValueExpression(new IntValue(20))
+                    ),
+                    new CompoundStatement(
+                            new VariableDeclarationStatement(
+                                    "a",
+                                    new RefType(new RefType(new IntType()))
+                            ),
+                            new CompoundStatement(
+                                    new NewStatement(
+                                            "a",
+                                            new VariableExpression("v")
+                                    ),
+                                    new CompoundStatement(
+                                            new NewStatement(
+                                                    "v",
+                                                    new ValueExpression(new IntValue(30))
+                                            ),
+                                            new PrintStatement(
+                                                new ReadHeapExpression(
+                                                        new ReadHeapExpression(
+                                                                new VariableExpression("a")
+                                                        )
+                                                )
+                                            )
+                                    )
+                            )
+                    )
+            )
+    );
+
+    // int v; v=4; (while (v>0) print(v); v=v-1); print(v)
+    public static Statement program_10 = new CompoundStatement(
+            new VariableDeclarationStatement(
+                    "v",
+                    new IntType()
+            ),
+            new CompoundStatement(
+                    new AssignmentStatement(
+                            "v",
+                            new ValueExpression(new IntValue(4))
+                    ),
+                    new CompoundStatement(
+                            new WhileStatement(
+                                    new IsGreaterThanRelationalExpression(
+                                            new VariableExpression("v"),
+                                            new ValueExpression(new IntValue(0))
+                                    ),
+                                    new CompoundStatement(
+                                            new PrintStatement(
+                                                    new VariableExpression("v")
+                                            ),
+                                            new AssignmentStatement(
+                                                    "v",
+                                                    new ArithmeticExpression(
+                                                            ArithmeticExpression.Operations.MINUS,
+                                                            new VariableExpression("v"),
+                                                            new ValueExpression(new IntValue(1))
+                                                    )
+                                            )
+                                    )
+                            ),
+                            new PrintStatement(
+                                    new VariableExpression("v")
                             )
                     )
             )

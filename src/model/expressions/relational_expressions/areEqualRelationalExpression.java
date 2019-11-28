@@ -2,6 +2,7 @@ package model.expressions.relational_expressions;
 
 import model.expressions.Expression;
 import model.values.Value;
+import utils.collections.heap.IMyHeap;
 import utils.collections.map.IMyMap;
 
 public class areEqualRelationalExpression implements Expression {
@@ -15,8 +16,8 @@ public class areEqualRelationalExpression implements Expression {
     }
 
     @Override
-    public Value evaluate(IMyMap<String, Value> symbolTable) {
-        return RelationalIntExpressions.isEqualTo(firstExpression, secondExpression, symbolTable);
+    public Value evaluate(IMyMap<String, Value> symbolsTable, IMyHeap<Integer,Value> heap) {
+        return RelationalIntExpressions.isEqualTo(firstExpression, secondExpression, symbolsTable, heap);
     }
 
     @Override

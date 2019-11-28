@@ -25,7 +25,7 @@ public class CloseFile implements Statement {
     public void execute(ProgramState state) {
 
         IMyMap<String, Value> symbolsTable = state.getSymbolsTable();
-        Value expressionValue = this.expression.evaluate(symbolsTable);
+        Value expressionValue = this.expression.evaluate(symbolsTable, state.getHeap());
         if (!expressionValue.getType().equals(new StringType())) {
             throw new TypeError("should be StringType");
         }

@@ -39,7 +39,7 @@ public class ReadFile implements Statement {
             throw new TypeError("should be IntType");
         }
 
-        Value expressionValue = this.expression.evaluate(symbolsTable);
+        Value expressionValue = this.expression.evaluate(symbolsTable, state.getHeap());
         if (!expressionValue.getType().equals(new StringType())) {
             throw new TypeError("should be StringType");
         }

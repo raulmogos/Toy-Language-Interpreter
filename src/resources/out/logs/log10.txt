@@ -1,0 +1,854 @@
+2019/11/28 02:53:07
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int v ; v = 4 ; WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int v
+v = 4 ; WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+int v
+v = 4 ; WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = 4 ; WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = 4 ; WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = 4
+WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = 4
+WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 } ; PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v) ; v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v) ; v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+4
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 4
+
+OUTPUT:
+4
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 3
+
+OUTPUT:
+4
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 3
+
+OUTPUT:
+4
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v) ; v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 3
+
+OUTPUT:
+4
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v) ; v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 3
+
+OUTPUT:
+4
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 3
+
+OUTPUT:
+4
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 3
+
+OUTPUT:
+4
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 3
+
+OUTPUT:
+4
+3
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 3
+
+OUTPUT:
+4
+3
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 2
+
+OUTPUT:
+4
+3
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 2
+
+OUTPUT:
+4
+3
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v) ; v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 2
+
+OUTPUT:
+4
+3
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v) ; v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 2
+
+OUTPUT:
+4
+3
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 2
+
+OUTPUT:
+4
+3
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 2
+
+OUTPUT:
+4
+3
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 2
+
+OUTPUT:
+4
+3
+2
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 2
+
+OUTPUT:
+4
+3
+2
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 1
+
+OUTPUT:
+4
+3
+2
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 1
+
+OUTPUT:
+4
+3
+2
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v) ; v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 1
+
+OUTPUT:
+4
+3
+2
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v) ; v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 1
+
+OUTPUT:
+4
+3
+2
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 1
+
+OUTPUT:
+4
+3
+2
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 1
+
+OUTPUT:
+4
+3
+2
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 1
+
+OUTPUT:
+4
+3
+2
+1
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+v = v - 1
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 1
+
+OUTPUT:
+4
+3
+2
+1
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+4
+3
+2
+1
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+WHILE (v>0): { PRINT(v) ; v = v - 1 }
+PRINT(v)
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+4
+3
+2
+1
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+4
+3
+2
+1
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+PRINT(v)
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+4
+3
+2
+1
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+4
+3
+2
+1
+0
+
+FILE TABLE:
+
+HEAP:
+
+
+
+----------------------------------------------------------------------------------
+STATEMENTS:
+
+SYMBOLS:
+v -> 0
+
+OUTPUT:
+4
+3
+2
+1
+0
+
+FILE TABLE:
+
+HEAP:
+
+
+

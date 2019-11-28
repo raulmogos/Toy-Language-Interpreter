@@ -1,7 +1,9 @@
 package model.expressions;
 
+import utils.collections.heap.IMyHeap;
 import utils.collections.map.IMyMap;
 import model.values.Value;
+import utils.exceptions.DoesNotExistError;
 
 public class VariableExpression implements Expression {
 
@@ -12,8 +14,11 @@ public class VariableExpression implements Expression {
     }
 
     @Override
-    public Value evaluate(IMyMap<String, Value> symbolTable) {
-        return symbolTable.get(symbol);
+    public Value evaluate(IMyMap<String, Value> symbolsTable, IMyHeap<Integer,Value> heap) {
+        if (!(symbolsTable.isKeyInMap(symbol))) {
+            throw new DoesNotExistError(symbol + "does not exist");
+        }
+        return symbolsTable.get(symbol);
     }
 
     @Override

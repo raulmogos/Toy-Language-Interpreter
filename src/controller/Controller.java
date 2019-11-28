@@ -1,5 +1,6 @@
 package controller;
 
+import controller.garbage_collector.GarbageCollector;
 import utils.exceptions.*;
 import model.ProgramState;
 import model.statements.Statement;
@@ -28,6 +29,20 @@ public class Controller {
          stateRepository.logCurrentProgramStateExecution();
          while (!currentProgram.getExecutionStack().isEmpty()) {
              oneStep(currentProgram);
+             stateRepository.logCurrentProgramStateExecution();
+             // TODO: rewrite the GarbageCollector call nicer
+             // TODO: such as: GarbageCollector.applyGarbageCollectorTo(currentProgram)
+             currentProgram.getHeap().setContent(
+                     GarbageCollector.unsafeGarbageCollector(
+                             GarbageCollector.getAddressesFromSymbolTable(
+                                currentProgram.getSymbolsTable().getContent().values()
+                             ),
+                            GarbageCollector.getAddressesFromHeapCells(
+                                    currentProgram.getHeap().getContent().values()
+                            ),
+                            currentProgram.getHeap().getContent()
+                     )
+             );
              stateRepository.logCurrentProgramStateExecution();
          }
      }

@@ -2,6 +2,7 @@ package model.expressions;
 
 import model.types.IntType;
 import model.values.IntValue;
+import utils.collections.heap.IMyHeap;
 import utils.collections.map.IMyMap;
 import model.values.Value;
 import utils.exceptions.DivisionByZeroError;
@@ -20,17 +21,17 @@ public class ArithmeticExpression implements Expression {
     private Expression secondExpression;
     private String operation;
 
-    public ArithmeticExpression( String operation, Expression firstExpression, Expression secondExpression) {
+    public ArithmeticExpression(String operation, Expression firstExpression, Expression secondExpression) {
         this.firstExpression = firstExpression;
         this.secondExpression = secondExpression;
         this.operation = operation;
     }
 
     @Override
-    public Value evaluate(IMyMap<String, Value> symbolTable) {
+    public Value evaluate(IMyMap<String, Value> symbolsTable, IMyHeap<Integer,Value> heap) {
 
-        Value valueFirstExpression = firstExpression.evaluate(symbolTable);
-        Value valueSecondExpression = secondExpression.evaluate(symbolTable);
+        Value valueFirstExpression = firstExpression.evaluate(symbolsTable, heap);
+        Value valueSecondExpression = secondExpression.evaluate(symbolsTable, heap);
 
         if (!valueFirstExpression.getType().equals(new IntType()) || !valueSecondExpression.getType().equals(new IntType()))
             throw new TypeError("invalid types");

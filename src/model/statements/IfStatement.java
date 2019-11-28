@@ -24,7 +24,7 @@ public class IfStatement implements Statement {
 
     @Override
     public void execute(ProgramState state) {
-        Value expressionValue = expression.evaluate(state.getSymbolsTable());
+        Value expressionValue = expression.evaluate(state.getSymbolsTable(), state.getHeap());
         Type typeOfExpression = expressionValue.getType();
         if (!typeOfExpression.equals(new BoolType()))
             throw new TypeError("types does not match");

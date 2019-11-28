@@ -7,6 +7,8 @@ import resources.in.programs.Programs;
 import model.statements.Statement;
 import model.values.StringValue;
 import model.values.Value;
+import utils.collections.heap.IMyHeap;
+import utils.collections.heap.MyHeap;
 import utils.collections.list.IMyList;
 import utils.collections.list.MyList;
 import utils.collections.map.IMyMap;
@@ -36,7 +38,8 @@ public class View {
             IMyMap<String, Value> symbols = new MyMap<>();
             IMyList<Value> output = new MyList<>();
             IMyMap<StringValue, BufferedReader> fileTable = new MyMap<>();
-            controller.addProgram(new ProgramState(statements, symbols, output, fileTable, program));
+            IMyHeap<Integer, Value> heap = new MyHeap<>();
+            controller.addProgram(new ProgramState(statements, symbols, output, fileTable, heap, program));
             controller.allStep();
         } catch (Exception e) {
             System.out.println(e.getMessage());

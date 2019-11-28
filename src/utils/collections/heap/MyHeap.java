@@ -1,14 +1,14 @@
-package utils.collections.map;
+package utils.collections.heap;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class MyMap<K, V> implements IMyMap<K, V> {
+public class MyHeap<K, V> implements IMyHeap<K, V> {
 
     private HashMap<K, V> map;
 
-    public MyMap() {
+    public MyHeap() {
         map = new HashMap<>();
     }
 
@@ -24,7 +24,7 @@ public class MyMap<K, V> implements IMyMap<K, V> {
 
     @Override
     public V remove(K key) {
-         return map.remove(key);
+        return map.remove(key);
     }
 
     @Override
@@ -40,6 +40,11 @@ public class MyMap<K, V> implements IMyMap<K, V> {
     @Override
     public Set<K> keySet() {
         return map.keySet();
+    }
+
+    @Override
+    public void setContent(Map<K, V> m) {
+        map = (HashMap<K, V>) m;
     }
 
     @Override

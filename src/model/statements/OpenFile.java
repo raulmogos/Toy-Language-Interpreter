@@ -25,7 +25,7 @@ public class OpenFile implements Statement {
 
     @Override
     public void execute(ProgramState state) {
-        Value value = this.expression.evaluate(state.getSymbolsTable());
+        Value value = this.expression.evaluate(state.getSymbolsTable(), state.getHeap());
         if (!value.getType().equals(new StringType())) {
             throw new TypeError();
         }

@@ -2,6 +2,7 @@ package model.expressions;
 
 import model.types.BoolType;
 import model.values.BoolValue;
+import utils.collections.heap.IMyHeap;
 import utils.exceptions.LogicExpressionError;
 import utils.collections.map.IMyMap;
 import model.values.Value;
@@ -34,11 +35,11 @@ public class LogicExpression implements Expression {
     }
 
     @Override
-    public Value evaluate(IMyMap<String, Value> symbolTable) {
+    public Value evaluate(IMyMap<String, Value> symbolsTable, IMyHeap<Integer,Value> heap) {
         if (isSingleExpression) {
             if (operation != Operations.NOT)
                 throw new LogicExpressionError("invalid logic expression: you should use NOT_operator in this case.");
-            Value value = firstExpression.evaluate(symbolTable);
+            Value value = firstExpression.evaluate(symbolsTable, heap);
             if (!value.getType().equals(new BoolType()))
                 throw new TypeError("this is not a bool type");
             BoolValue boolValue = (BoolValue)value;
@@ -47,8 +48,8 @@ public class LogicExpression implements Expression {
         // is not a single expression
         if (operation == Operations.NOT)
             throw new LogicExpressionError("invalid logic expression: you should not use NOT_operator in this case.");
-        Value valueFirstExpression = firstExpression.evaluate(symbolTable);
-        Value valueSecondExpression = secondExpression.evaluate(symbolTable);
+        Value valueFirstExpression = firstExpression.evaluate(symbolsTable, heap);
+        Value valueSecondExpression = secondExpression.evaluate(symbolsTable, heap);
         if (!valueFirstExpression.getType().equals(new BoolType()) || !valueSecondExpression.getType().equals(new BoolType()))
             throw new TypeError("this is not a bool type");
         BoolValue boolValueFirstExpression = (BoolValue)valueFirstExpression;
