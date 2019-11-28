@@ -43,6 +43,7 @@ public class Controller {
                             currentProgram.getHeap().getContent()
                      )
              );
+             stateRepository.logGarbageCollectorHasBeenApplied();
              stateRepository.logCurrentProgramStateExecution();
          }
      }

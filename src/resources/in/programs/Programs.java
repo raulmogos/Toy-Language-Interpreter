@@ -401,4 +401,49 @@ public class Programs {
                     )
             )
     );
+
+    // Ref int v; new(v,20); Ref Ref int a; new(a,v); new(v,30); new(v, 40) print(rH(rH(a)))
+    public static Statement program_11 = new CompoundStatement(
+            new VariableDeclarationStatement(
+                    "v",
+                    new RefType(new IntType())
+            ),
+            new CompoundStatement(
+                    new NewStatement(
+                            "v",
+                            new ValueExpression(new IntValue(20))
+                    ),
+                    new CompoundStatement(
+                            new VariableDeclarationStatement(
+                                    "a",
+                                    new RefType(new RefType(new IntType()))
+                            ),
+                            new CompoundStatement(
+                                    new NewStatement(
+                                            "a",
+                                            new VariableExpression("v")
+                                    ),
+                                    new CompoundStatement(
+                                            new NewStatement(
+                                                    "v",
+                                                    new ValueExpression(new IntValue(30))
+                                            ),
+                                            new CompoundStatement(
+                                                    new NewStatement(
+                                                            "v",
+                                                            new ValueExpression(new IntValue(40))
+                                                    ),
+                                                    new PrintStatement(
+                                                            new ReadHeapExpression(
+                                                                    new ReadHeapExpression(
+                                                                            new VariableExpression("a")
+                                                                    )
+                                                            )
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+            )
+    );
 }

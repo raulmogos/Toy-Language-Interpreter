@@ -12,6 +12,7 @@ import utils.exceptions.TypeError;
 
 public class NewStatement implements Statement {
 
+    // TODO: explicatie lab
     private static int address = 0;
 
     private String variableName;

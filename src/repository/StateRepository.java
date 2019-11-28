@@ -1,5 +1,6 @@
 package repository;
 
+import controller.garbage_collector.GarbageCollector;
 import model.ProgramState;
 import utils.exceptions.IOError;
 
@@ -47,6 +48,17 @@ public class StateRepository implements IStateRepository {
             throw new IOError(error.getMessage());
         }
         logFile.println(states.get(states.size() - 1));
+        logFile.close();
+    }
+
+    @Override
+    public void logGarbageCollectorHasBeenApplied() {
+        try {
+            logFile = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath, true)));
+        } catch (IOException error) {
+            throw new IOError(error.getMessage());
+        }
+        logFile.println("GarbageCollector has been applied");
         logFile.close();
     }
 

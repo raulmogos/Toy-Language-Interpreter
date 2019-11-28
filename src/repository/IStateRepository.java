@@ -1,11 +1,11 @@
 package repository;
 
+import controller.garbage_collector.GarbageCollector;
 import model.ProgramState;
-
-import java.io.IOException;
 
 public interface IStateRepository {
     void addProgramState(ProgramState programState);
     ProgramState getCurrentProgram();
     void logCurrentProgramStateExecution();
+    void logGarbageCollectorHasBeenApplied();
 }

@@ -16,8 +16,7 @@ public class GarbageCollector {
                 .collect(Collectors.toList());
         return heap.entrySet().stream()
                 .filter(e->addressesUsed.contains(e.getKey()))
-                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     public static List<Integer> getAddressesFromSymbolTable(Collection<Value> symTableValues){
