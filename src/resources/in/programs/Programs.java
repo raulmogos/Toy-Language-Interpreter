@@ -446,4 +446,76 @@ public class Programs {
                     )
             )
     );
+
+    // int v; Ref int a; v=10; new(a,22);
+    // fork( wH(a,30); v=32; print(v); print(rH(a)));
+    // print(v); print(rH(a))
+    public static Statement program_12 = new CompoundStatement(
+            new VariableDeclarationStatement(
+                    "v",
+                    new IntType()
+            ),
+            new CompoundStatement(
+                    new VariableDeclarationStatement(
+                            "a",
+                            new RefType(new IntType())
+                    ),
+                    new CompoundStatement(
+                            new AssignmentStatement(
+                                    "v",
+                                    new ValueExpression(new IntValue(10))
+                            ),
+                            new CompoundStatement(
+                                    new NewStatement(
+                                            "a",
+                                            new ValueExpression(new IntValue(22))
+                                    ),
+                                    new CompoundStatement(
+                                            new ForkStatement(
+                                                    new CompoundStatement(
+                                                            new WriteHeapStatement(
+                                                                    "a",
+                                                                    new ValueExpression(new IntValue(30))
+                                                            ),
+                                                            new CompoundStatement(
+                                                                    new AssignmentStatement(
+                                                                            "v",
+                                                                            new ValueExpression(new IntValue(32))
+                                                                    ),
+                                                                    new CompoundStatement(
+                                                                            new PrintStatement(
+                                                                                    new VariableExpression(
+                                                                                            "v"
+                                                                                    )
+                                                                            ),
+                                                                            new PrintStatement(
+                                                                                    new ReadHeapExpression(
+                                                                                            new VariableExpression(
+                                                                                                    "a"
+                                                                                            )
+                                                                                    )
+                                                                            )
+                                                                    )
+                                                            )
+                                                    )
+                                            ),
+                                            new CompoundStatement(
+                                                    new PrintStatement(
+                                                            new VariableExpression(
+                                                                    "v"
+                                                            )
+                                                    ),
+                                                    new PrintStatement(
+                                                            new ReadHeapExpression(
+                                                                    new VariableExpression(
+                                                                            "a"
+                                                                    )
+                                                            )
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+            )
+    );
 }

@@ -13,6 +13,7 @@ import utils.exceptions.TypeError;
 public class NewStatement implements Statement {
 
     // TODO: explicatie lab
+    // TODO: change address implementation
     private static int address = 0;
 
     private String variableName;
@@ -24,9 +25,9 @@ public class NewStatement implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
 
-        //check whether var_name is a variable in SymTable and its type is a RefType.
+        // check whether var_name is a variable in SymTable and its type is a RefType.
         // If not, the execution is stopped with an appropriate error message.
         IMyMap<String, Value> symbolsTable = state.getSymbolsTable();
         if (!symbolsTable.isKeyInMap(variableName)) {
@@ -47,15 +48,17 @@ public class NewStatement implements Statement {
             throw new TypeError("should be equal");
         }
 
-        //Create a new entry in the Heap table such that a new key (new free address) is generated and
-        //it is associated to the result of the expression evaluation
+        // Create a new entry in the Heap table such that a new key (new free address) is generated and
+        // it is associated to the result of the expression evaluation
         address += 1;
         state.getHeap().put(address, value);
 
-        //in SymTable update the RefValue associated to the var_name such that the new RefValue
-        //has the same locationType and the address is equal to the new key generated in the Heap at
-        //the previous step
+        // in SymTable update the RefValue associated to the var_name such that the new RefValue
+        // has the same locationType and the address is equal to the new key generated in the Heap at
+        // the previous step
         symbolsTable.put(variableName, new RefValue(address, ((RefType) refValueVariableName.getType()).getInnerType()));
+
+        return null;
     }
 
     @Override

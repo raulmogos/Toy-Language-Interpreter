@@ -23,7 +23,7 @@ public class IfStatement implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
         Value expressionValue = expression.evaluate(state.getSymbolsTable(), state.getHeap());
         Type typeOfExpression = expressionValue.getType();
         if (!typeOfExpression.equals(new BoolType()))
@@ -35,6 +35,7 @@ public class IfStatement implements Statement {
         } else {
             executionStack.push(elseStatement);
         }
+        return null;
     }
 
     @Override

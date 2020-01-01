@@ -17,10 +17,12 @@ public class VariableDeclarationStatement implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
         IMyMap<String, Value> symbols = state.getSymbolsTable();
         if (symbols.isKeyInMap(symbol)) throw new DoesAlreadyExistError("this symbol has been declared");
         symbols.put(symbol, type.getDefaultValue());
+
+        return null;
     }
 
     @Override

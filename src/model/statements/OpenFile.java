@@ -24,7 +24,7 @@ public class OpenFile implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
         Value value = this.expression.evaluate(state.getSymbolsTable(), state.getHeap());
         if (!value.getType().equals(new StringType())) {
             throw new TypeError();
@@ -39,6 +39,7 @@ public class OpenFile implements Statement {
         } catch(FileNotFoundException error) {
             throw new FileNotFoundError(error.getMessage());
         }
+        return null;
     }
 
     @Override

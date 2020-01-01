@@ -20,7 +20,7 @@ public class WhileStatement implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
         Value valueExpression = expression.evaluate(state.getSymbolsTable(), state.getHeap());
         if (!(valueExpression.getType().equals(new BoolType()))) {
             throw new TypeError("at while statement -> type error -> should be BoolType");
@@ -30,6 +30,7 @@ public class WhileStatement implements Statement {
             state.getExecutionStack().push(this);
             state.getExecutionStack().push(statement);
         }
+        return null;
     }
 
     @Override

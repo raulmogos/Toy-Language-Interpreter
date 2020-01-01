@@ -14,10 +14,12 @@ public class CompoundStatement implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
         IMyStack<Statement> stack = state.getExecutionStack();
         stack.push(this.secondStatement);
         stack.push(this.firstStatement);
+
+        return null;
     }
 
     @Override

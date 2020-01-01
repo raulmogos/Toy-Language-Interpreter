@@ -23,7 +23,7 @@ public class WriteHeapStatement implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
         // check if variableName is a variable defined in SymTable,
         // if its type is a RefType and
         // if the address from the RefValue associated in SymTable is a key in Heap.
@@ -56,10 +56,12 @@ public class WriteHeapStatement implements Statement {
         // access the Heap using the address from variableName and that Heap entry is updated
         // to the result of the expression evaluation
         heap.put(address, valueExpression);
+
+        return null;
     }
 
     @Override
     public String toString() {
-        return Symbols.WRITE_HEAP + "(" + variableName + expression.toString() + ")";
+        return Symbols.WRITE_HEAP + "(" + variableName + ", " + expression.toString() + ")";
     }
 }

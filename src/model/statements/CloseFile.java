@@ -22,7 +22,7 @@ public class CloseFile implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
 
         IMyMap<String, Value> symbolsTable = state.getSymbolsTable();
         Value expressionValue = this.expression.evaluate(symbolsTable, state.getHeap());
@@ -41,6 +41,8 @@ public class CloseFile implements Statement {
         }
 
         fileTable.remove(expressionStringValue);
+
+        return null;
     }
 
     @Override

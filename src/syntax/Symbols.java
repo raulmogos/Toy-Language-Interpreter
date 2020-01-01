@@ -20,4 +20,6 @@ public class Symbols {
     public static final String NEW = "new";
     public static final String READ_HEAP = "readHeap";
     public static final String WRITE_HEAP = "writeHeap";
+
+    public static final String FORK = "FORK";
 }

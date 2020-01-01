@@ -29,7 +29,6 @@ public class Main {
 //
 //        view.start();
 
-
         Statement ex1 = Programs.program_1;
         IMyStack<Statement> statements1 = new MyStack<>();
         IMyMap<String, Value> symbols1 = new MyMap<>();
@@ -151,6 +150,18 @@ public class Main {
         repo11.addProgramState(prg11);
         Controller ctr11 = new Controller(repo11);
 
+        Statement ex12 = Programs.program_12;
+        IMyStack<Statement> statements12 = new MyStack<>();
+        IMyMap<String, Value> symbols12 = new MyMap<>();
+        IMyList<Value> output12 = new MyList<>();
+        IMyMap<StringValue, BufferedReader> fileTable12 = new MyMap<>();
+        IMyHeap<Integer, Value> heap12 = new MyHeap<>();
+        ProgramState prg12 = new ProgramState(statements12, symbols12, output12, fileTable12, heap12, ex12);
+        IStateRepository repo12 = new StateRepository("log12.txt");
+        repo12.addProgramState(prg12);
+        Controller ctr12 = new Controller(repo12);
+
+
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
         menu.addCommand(new RunExample("1",ex1.toString(),ctr1));
@@ -164,6 +175,7 @@ public class Main {
         menu.addCommand(new RunExample("9",ex9.toString(),ctr9));
         menu.addCommand(new RunExample("10",ex10.toString(),ctr10));
         menu.addCommand(new RunExample("11",ex11.toString(),ctr11));
+        menu.addCommand(new RunExample("12",ex12.toString(),ctr12));
         menu.show();
     }
 }

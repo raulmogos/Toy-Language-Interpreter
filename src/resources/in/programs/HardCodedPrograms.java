@@ -1,5 +1,6 @@
 package resources.in.programs;
 
+import model.statements.CompoundStatement;
 import model.statements.Statement;
 
 import java.util.ArrayList;
@@ -31,13 +32,15 @@ public class HardCodedPrograms {
                 return Programs.program_10;
             case 11:
                 return Programs.program_11;
+            case 12:
+                return Programs.program_12;
             default:
                 throw new RuntimeException("no index provided");
         }
     }
 
     // TODO
-    public Statement createTreeStatement(ArrayList<Statement> statements) {
+    public CompoundStatement createTreeStatement(ArrayList<Statement> statements) {
         return null;
     }
 }

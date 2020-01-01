@@ -1,11 +1,10 @@
 package controller.garbage_collector;
 
+import model.ProgramState;
 import model.values.RefValue;
 import model.values.Value;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,5 +32,15 @@ public class GarbageCollector {
                 .filter(v-> v instanceof RefValue)
                 .map(v-> ((RefValue) v).getAddress())
                 .collect(Collectors.toList());
+    }
+
+    public static List<Value> getAllSymbols(List<ProgramState> listOfAllPrograms) {
+        Set<Value> rez = new HashSet<>();
+        listOfAllPrograms.forEach(table -> {
+                    table.getSymbolsTable().getContent().values().forEach(item -> {
+                        rez.add(item);
+                    });
+                });
+        return new ArrayList<>(rez);
     }
 }

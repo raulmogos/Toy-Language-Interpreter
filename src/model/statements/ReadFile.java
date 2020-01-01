@@ -27,7 +27,7 @@ public class ReadFile implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
 
         IMyMap<String, Value> symbolsTable = state.getSymbolsTable();
         if (!symbolsTable.isKeyInMap(this.variableName)) {
@@ -59,6 +59,8 @@ public class ReadFile implements Statement {
         } catch (IOException error) {
             throw new IOError(error.getMessage());
         }
+
+        return null;
     }
 
     @Override

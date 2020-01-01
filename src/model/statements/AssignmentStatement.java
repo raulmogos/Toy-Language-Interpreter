@@ -18,7 +18,7 @@ public class AssignmentStatement implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
         IMyMap<String, Value> symbolTable = state.getSymbolsTable();
         if (!symbolTable.isKeyInMap(symbol)) throw new DoesNotExistError();
         Value oldValue = symbolTable.get(symbol);
@@ -26,6 +26,7 @@ public class AssignmentStatement implements Statement {
         if (!newValue.getType().equals(oldValue.getType())) throw new TypeError("types do not match: " +
                 oldValue.getType().toString() + " != " + newValue.getType().toString());
         symbolTable.put(symbol, newValue);
+        return null;
     }
 
     @Override

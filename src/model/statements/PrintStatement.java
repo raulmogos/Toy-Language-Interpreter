@@ -15,9 +15,11 @@ public class PrintStatement implements Statement {
     }
 
     @Override
-    public void execute(ProgramState state) {
+    public ProgramState execute(ProgramState state) {
         IMyList<Value> output = state.getOutput();
         output.add(expression.evaluate(state.getSymbolsTable(), state.getHeap()));
+
+        return null;
     }
 
     @Override
