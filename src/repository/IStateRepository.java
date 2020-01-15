@@ -12,4 +12,11 @@ public interface IStateRepository {
     void logGarbageCollectorHasBeenApplied();
     List<ProgramState> getProgramStatesList();
     void setProgramStatesList(List<ProgramState> programStatesList);
+    public void updateDataProgramState();
+    public String getOutputCurrentString();
+    public String getStackCurrentString(int id);
+    public String getHeapCurrentString();
+    public String getSymbolsCurrentString(int id);
+    public String getCodeCurrentString();
+    public String getFilesCurrentString();
 }

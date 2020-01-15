@@ -1,4 +1,6 @@
 import controller.Controller;
+import javafx.application.Application;
+import javafx.stage.Stage;
 import model.ProgramState;
 import resources.in.programs.Programs;
 import model.statements.Statement;
@@ -14,20 +16,22 @@ import utils.collections.map.IMyMap;
 import utils.collections.map.MyMap;
 import utils.collections.stack.IMyStack;
 import utils.collections.stack.MyStack;
-import view.TextMenu;
-import view.commands.ExitCommand;
-import view.commands.RunExample;
+import view.console.TextMenu;
+import view.console.commands.ExitCommand;
+import view.console.commands.RunExample;
+import view.gui.MainWindow;
 
 import java.io.BufferedReader;
 
 
 public class Main {
     public static void main(String[] argv) {
-//        IStateRepository repo = new StateRepository("ProgramStateExecution.txt");
-//        Controller ctrl = new Controller(repo);
-//        View view = new View(ctrl);
-//
-//        view.start();
+
+        //IStateRepository repo = new StateRepository("ProgramStateExecution.txt");
+        //Controller ctrl = new Controller(repo);
+        //View view = new View(ctrl);
+        //
+        //view.start();
 
         Statement ex1 = Programs.program_1;
         IMyStack<Statement> statements1 = new MyStack<>();
@@ -162,20 +166,38 @@ public class Main {
         Controller ctr12 = new Controller(repo12);
 
 
-        TextMenu menu = new TextMenu();
-        menu.addCommand(new ExitCommand("0", "exit"));
-        menu.addCommand(new RunExample("1",ex1.toString(),ctr1));
-        menu.addCommand(new RunExample("2",ex2.toString(),ctr2));
-        menu.addCommand(new RunExample("3",ex3.toString(),ctr3));
-        menu.addCommand(new RunExample("4",ex4.toString(),ctr4));
-        menu.addCommand(new RunExample("5",ex5.toString(),ctr5));
-        menu.addCommand(new RunExample("6",ex6.toString(),ctr6));
-        menu.addCommand(new RunExample("7",ex7.toString(),ctr7));
-        menu.addCommand(new RunExample("8",ex8.toString(),ctr8));
-        menu.addCommand(new RunExample("9",ex9.toString(),ctr9));
-        menu.addCommand(new RunExample("10",ex10.toString(),ctr10));
-        menu.addCommand(new RunExample("11",ex11.toString(),ctr11));
-        menu.addCommand(new RunExample("12",ex12.toString(),ctr12));
-        menu.show();
+        //TextMenu menu = new TextMenu();
+        //menu.addCommand(new ExitCommand("0", "exit"));
+        //menu.addCommand(new RunExample("1",ex1.toString(),ctr1));
+        //menu.addCommand(new RunExample("2",ex2.toString(),ctr2));
+        //menu.addCommand(new RunExample("3",ex3.toString(),ctr3));
+        //menu.addCommand(new RunExample("4",ex4.toString(),ctr4));
+        //menu.addCommand(new RunExample("5",ex5.toString(),ctr5));
+        //menu.addCommand(new RunExample("6",ex6.toString(),ctr6));
+        //menu.addCommand(new RunExample("7",ex7.toString(),ctr7));
+        //menu.addCommand(new RunExample("8",ex8.toString(),ctr8));
+        //menu.addCommand(new RunExample("9",ex9.toString(),ctr9));
+        //menu.addCommand(new RunExample("10",ex10.toString(),ctr10));
+        //menu.addCommand(new RunExample("11",ex11.toString(),ctr11));
+        //menu.addCommand(new RunExample("12",ex12.toString(),ctr12));
+        //menu.show();
+
+        MainWindow.addController("1", ex1.toString(), ctr1);
+        MainWindow.addController("2", ex2.toString(), ctr2);
+        MainWindow.addController("3", ex3.toString(), ctr3);
+        MainWindow.addController("4", ex4.toString(), ctr4);
+
+        MainWindow.addController("5", ex5.toString(), ctr5);
+        MainWindow.addController("6", ex6.toString(), ctr6);
+        MainWindow.addController("7", ex7.toString(), ctr7);
+        MainWindow.addController("8", ex8.toString(), ctr8);
+
+        MainWindow.addController("9", ex9.toString(), ctr9);
+        MainWindow.addController("10", ex10.toString(), ctr10);
+        MainWindow.addController("11", ex11.toString(), ctr11);
+        MainWindow.addController("12", ex12.toString(), ctr12);
+
+        MainWindow.launch(MainWindow.class, argv);
+
     }
 }

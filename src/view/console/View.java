@@ -1,4 +1,4 @@
-package view;
+package view.console;
 
 import controller.Controller;
 import model.ProgramState;

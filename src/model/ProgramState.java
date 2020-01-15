@@ -12,7 +12,7 @@ import utils.exceptions.NoMoreStatementsError;
 
 import java.io.BufferedReader;
 
-public class  ProgramState {
+public class ProgramState {
 
     private static int MAX_ID = 0;
 
@@ -48,6 +48,10 @@ public class  ProgramState {
 
     public IMyList<Value> getOutput() {
         return output;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public IMyMap<StringValue, BufferedReader> getFileTable() {

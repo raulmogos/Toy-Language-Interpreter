@@ -1,4 +1,4 @@
-package view.commands;
+package view.console.commands;
 
 public abstract class Command {
     private String key, description;

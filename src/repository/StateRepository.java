@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class StateRepository implements IStateRepository {
@@ -18,16 +19,27 @@ public class StateRepository implements IStateRepository {
     private PrintWriter logFile;
     private ArrayList<ProgramState> states;
 
+    private String outputCurrentString;
+    private HashMap<Integer, String> stackCurrentStringMap;
+    private String heapCurrentString;
+    private HashMap<Integer, String> symbolsCurrentStringMap;
+
+    private String filesCurrentString;
+
     public StateRepository(String logFilePath) {
         states = new ArrayList<>();
         this.logFilePath = "src\\resources\\out\\logs\\" + logFilePath;
         this.setUpPrinterWriter();
+        stackCurrentStringMap = new HashMap<>();
+        symbolsCurrentStringMap = new HashMap<>();
     }
 
     public StateRepository() {
         states = new ArrayList<>();
         this.logFilePath = "src\\resources\\out\\logs\\DefaultLogFile.txt";
         this.setUpPrinterWriter();
+        stackCurrentStringMap = new HashMap<>();
+        symbolsCurrentStringMap = new HashMap<>();
     }
 
     @Override
@@ -87,5 +99,37 @@ public class StateRepository implements IStateRepository {
     private String getCurrentTime() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         return dtf.format(LocalDateTime.now());
+    }
+
+    public void updateDataProgramState() {
+        outputCurrentString = states.size() != 0 ? states.get(0).getOutput().toString() : "";
+        states.forEach(s -> stackCurrentStringMap.put(s.getId(), s.getExecutionStack().toString()));
+        heapCurrentString = states.size() != 0 ? states.get(0).getHeap().toString() : "";
+        states.forEach(s -> symbolsCurrentStringMap.put(s.getId(), s.getSymbolsTable().toString()));
+        filesCurrentString = states.size() != 0 ? states.get(0).getFileTable().toString() : "";
+    }
+
+    public String getOutputCurrentString() {
+        return outputCurrentString;
+    }
+
+    public String getStackCurrentString(int id) {
+        return stackCurrentStringMap.get(id);
+    }
+
+    public String getHeapCurrentString() {
+        return heapCurrentString;
+    }
+
+    public String getCodeCurrentString() {
+        return states.get(0).getExecutionStack().toString();
+    }
+
+    public String getSymbolsCurrentString(int id) {
+        return symbolsCurrentStringMap.get(id);
+    }
+
+    public String getFilesCurrentString() {
+        return filesCurrentString;
     }
 }

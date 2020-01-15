@@ -47,6 +47,30 @@ public class Controller {
     //    }
     //}
 
+    public void oneStepForAll() {
+        List<ProgramState> programStateList = this.removeCompletedPrograms(stateRepository.getProgramStatesList());
+
+        if (programStateList.size() == 0) {
+            throw new RuntimeException("no more programs");
+        }
+
+        // HERE you can call conservativeGarbageCollector
+        Map<Integer, Value> newHeap = GarbageCollector.unsafeGarbageCollector(
+                GarbageCollector.getAddressesFromSymbolTable(
+                        GarbageCollector.getAllSymbols(programStateList)
+                ),
+                GarbageCollector.getAddressesFromHeapCells(
+                        programStateList.get(0).getHeap().getContent().values()
+                ),
+                programStateList.get(0).getHeap().getContent()
+        );
+        //
+        programStateList.forEach(item -> item.getHeap().setContent(newHeap));
+
+        // on step for all
+        this.oneStepForAllPrg(programStateList);
+    }
+
     private void oneStepForAllPrg(List<ProgramState> programStateList) {
         // before the execution, print the programStateList into the log file
         programStateList.forEach(prg -> stateRepository.logCurrentProgramStateExecution(prg));
@@ -90,11 +114,14 @@ public class Controller {
         // Save the current programs in the repository
         stateRepository.setProgramStatesList(programStateList);
 
+        //
+        stateRepository.updateDataProgramState();
+
         // after the execution, print the PrgState List into the log file
         programStateList.forEach(prg -> stateRepository.logCurrentProgramStateExecution(prg));
     }
 
-    public void allStep() {
+    synchronized public void allStep() {
         List<ProgramState> completedPrograms = new ArrayList<>();
 
         //remove the completed programs
@@ -153,5 +180,9 @@ public class Controller {
         return inProgramList.stream()
                 .filter(p -> !p.isNotCompleted())
                 .collect(Collectors.toList());
+    }
+
+    public IStateRepository getStateRepository() {
+        return stateRepository;
     }
 }
