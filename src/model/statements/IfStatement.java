@@ -1,6 +1,7 @@
 package model.statements;
 
 import model.ProgramState;
+import utils.collections.map.IMyMap;
 import utils.collections.stack.IMyStack;
 import model.expressions.Expression;
 import syntax.Symbols;
@@ -36,6 +37,17 @@ public class IfStatement implements Statement {
             executionStack.push(elseStatement);
         }
         return null;
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type expressionType = expression.typeCheck(typeEnvironment);
+        if (!expressionType.equals(new BoolType())) {
+            throw new TypeError("The condition of IF has not the type bool");
+        }
+        thenStatement.typeCheck(typeEnvironment);
+        elseStatement.typeCheck(typeEnvironment);
+        return typeEnvironment;
     }
 
     @Override

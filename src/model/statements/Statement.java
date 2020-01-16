@@ -1,9 +1,10 @@
 package model.statements;
 
 import model.ProgramState;
-
-import java.io.FileNotFoundException;
+import model.types.Type;
+import utils.collections.map.IMyMap;
 
 public interface Statement {
     ProgramState execute(ProgramState state);
+    IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment);
 }

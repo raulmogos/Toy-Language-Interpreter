@@ -18,7 +18,7 @@ import model.statements.*;
 public class Programs {
 
     private static final String TOY_LANG_PATH_PREFIX = "src\\resources\\in\\toy_lang_files\\";
-    public static int NUMBER_OF_PROGRAMS = 7;
+    public static int NUMBER_OF_PROGRAMS = 12;
 
     // int v; v=2; PRINT(v)
     public static Statement program_1 = new CompoundStatement(

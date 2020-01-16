@@ -1,5 +1,7 @@
 import controller.Controller;
 import model.ProgramState;
+import model.types.Type;
+import resources.in.programs.HardCodedPrograms;
 import resources.in.programs.Programs;
 import model.statements.Statement;
 import model.values.StringValue;
@@ -18,7 +20,9 @@ import view.TextMenu;
 import view.commands.ExitCommand;
 import view.commands.RunExample;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.BufferedReader;
+import java.util.ArrayList;
 
 
 public class Main {
@@ -161,6 +165,22 @@ public class Main {
         repo12.addProgramState(prg12);
         Controller ctr12 = new Controller(repo12);
 
+        for (int i = 1; i <= Programs.NUMBER_OF_PROGRAMS; i++) {
+            MyMap<String, Type> typeEnv = new MyMap<>();
+            try {
+                HardCodedPrograms.getProgramByIndex(i).typeCheck(typeEnv);
+                System.out.println("for:" + i);
+                System.out.println(typeEnv.toString());
+                System.out.println("------------------");
+            } catch (Exception e) {
+                System.out.println(ex1.toString());
+                System.out.println(i + "\n" + e.getMessage());
+                System.out.println("for:" + i);
+                System.out.println(typeEnv.toString());
+                System.out.println("------------------");
+                return;
+            }
+        }
 
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));

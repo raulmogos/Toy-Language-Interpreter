@@ -1,11 +1,13 @@
 package model.expressions;
 
 import model.types.RefType;
+import model.types.Type;
 import model.values.RefValue;
 import model.values.Value;
 import syntax.Symbols;
 import utils.collections.heap.IMyHeap;
 import utils.collections.map.IMyMap;
+import utils.collections.map.MyMap;
 import utils.exceptions.DoesNotExistError;
 import utils.exceptions.TypeError;
 
@@ -34,6 +36,15 @@ public class ReadHeapExpression implements Expression {
         }
 
         return heap.get(address);
+    }
+
+    @Override
+    public Type typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type type = expression.typeCheck(typeEnvironment);
+        if (!(type instanceof RefType)) {
+            throw new TypeError("he ReadHeapExpression argument is not a Ref Type");
+        }
+        return ((RefType)type).getInnerType();
     }
 
     @Override

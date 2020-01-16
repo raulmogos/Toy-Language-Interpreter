@@ -1,6 +1,7 @@
 package model.statements;
 
 import model.ProgramState;
+import model.types.Type;
 import model.values.StringValue;
 import model.values.Value;
 import syntax.Symbols;
@@ -38,6 +39,12 @@ public class ForkStatement implements Statement {
         IMyHeap<Integer, Value> heap = state.getHeap();
 
         return new ProgramState(executionStack, symbolsTable, output, fileTable, heap, this.statement);
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        statement.typeCheck(typeEnvironment);
+        return typeEnvironment;
     }
 
     @Override

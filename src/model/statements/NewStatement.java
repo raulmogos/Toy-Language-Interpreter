@@ -3,6 +3,7 @@ package model.statements;
 import model.ProgramState;
 import model.expressions.Expression;
 import model.types.RefType;
+import model.types.Type;
 import model.values.RefValue;
 import model.values.Value;
 import syntax.Symbols;
@@ -59,6 +60,16 @@ public class NewStatement implements Statement {
         symbolsTable.put(variableName, new RefValue(address, ((RefType) refValueVariableName.getType()).getInnerType()));
 
         return null;
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type variableType = typeEnvironment.get(variableName);
+        Type expressionType = expression.typeCheck(typeEnvironment);
+        if (!variableType.equals(new RefType(expressionType))) {
+            throw new TypeError("NEW stmt: right hand side and left hand side have different types");
+        }
+        return typeEnvironment;
     }
 
     @Override

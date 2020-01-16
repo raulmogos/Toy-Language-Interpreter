@@ -1,8 +1,11 @@
 package model.expressions;
 
 import model.types.BoolType;
+import model.types.IntType;
+import model.types.Type;
 import model.values.BoolValue;
 import utils.collections.heap.IMyHeap;
+import utils.collections.map.MyMap;
 import utils.exceptions.LogicExpressionError;
 import utils.collections.map.IMyMap;
 import model.values.Value;
@@ -58,6 +61,21 @@ public class LogicExpression implements Expression {
             return new BoolValue(boolValueFirstExpression.getValue() && boolValueSecondExpression.getValue());
         }
         return new BoolValue(boolValueFirstExpression.getValue() || boolValueSecondExpression.getValue());
+    }
+
+    @Override
+    public Type typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type typeFirstExpression = firstExpression.typeCheck(typeEnvironment);
+        Type typeSecondExpression = secondExpression != null ? secondExpression.typeCheck(typeEnvironment) : null;
+        if (!typeFirstExpression.equals(new BoolType())) {
+            throw new TypeError("first operand is not a boolean");
+        }
+        if ( typeSecondExpression != null ) {
+            if (!typeSecondExpression.equals(new BoolType())) {
+                throw new TypeError("second operand is not a boolean");
+            }
+        }
+        return new BoolType();
     }
 
     @Override

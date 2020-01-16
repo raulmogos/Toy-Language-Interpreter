@@ -1,5 +1,6 @@
 package model.statements;
 
+import model.types.Type;
 import utils.exceptions.DoesAlreadyExistError;
 import utils.exceptions.FileNotFoundError;
 import utils.collections.map.IMyMap;
@@ -27,7 +28,7 @@ public class OpenFile implements Statement {
     public ProgramState execute(ProgramState state) {
         Value value = this.expression.evaluate(state.getSymbolsTable(), state.getHeap());
         if (!value.getType().equals(new StringType())) {
-            throw new TypeError();
+            throw new TypeError("should be string");
         }
         StringValue stringValue = (StringValue)value;
         IMyMap<StringValue, BufferedReader> fileTable = state.getFileTable();
@@ -40,6 +41,15 @@ public class OpenFile implements Statement {
             throw new FileNotFoundError(error.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type expressionType = expression.typeCheck(typeEnvironment);
+        if (!expressionType.equals(new StringType())) {
+            throw new TypeError("OpenFile: should be string");
+        }
+        return typeEnvironment;
     }
 
     @Override

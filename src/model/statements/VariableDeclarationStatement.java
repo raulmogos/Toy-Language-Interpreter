@@ -26,6 +26,12 @@ public class VariableDeclarationStatement implements Statement {
     }
 
     @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        typeEnvironment.put(symbol, type);
+        return typeEnvironment;
+    }
+
+    @Override
     public String toString() {
         return type.toString() + " " + symbol;
     }

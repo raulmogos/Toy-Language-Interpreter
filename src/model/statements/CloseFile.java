@@ -2,6 +2,7 @@ package model.statements;
 
 import model.ProgramState;
 import model.expressions.Expression;
+import model.types.Type;
 import syntax.Symbols;
 import model.types.StringType;
 import model.values.StringValue;
@@ -43,6 +44,12 @@ public class CloseFile implements Statement {
         fileTable.remove(expressionStringValue);
 
         return null;
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        expression.typeCheck(typeEnvironment);
+        return typeEnvironment;
     }
 
     @Override
