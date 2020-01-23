@@ -169,6 +169,7 @@ public class Main {
         repo12.addProgramState(prg12);
         Controller ctr12 = new Controller(repo12);
 
+        // printing the type env
         for (int i = 1; i <= Programs.NUMBER_OF_PROGRAMS; i++) {
             MyMap<String, Type> typeEnv = new MyMap<>();
             try {
@@ -186,6 +187,7 @@ public class Main {
             }
         }
 
+        // console ui
         //TextMenu menu = new TextMenu();
         //menu.addCommand(new ExitCommand("0", "exit"));
         //menu.addCommand(new RunExample("1",ex1.toString(),ctr1));

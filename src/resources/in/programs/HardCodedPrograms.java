@@ -40,7 +40,11 @@ public class HardCodedPrograms {
     }
 
     // TODO
-    public CompoundStatement createTreeStatement(ArrayList<Statement> statements) {
-        return null;
+    public static Statement createTreeStatement(ArrayList<Statement> statements) {
+        int size = statements.size();
+        if ( size == 1 ) {
+            return statements.get(0);
+        }
+        return new CompoundStatement(statements.get(0), createTreeStatement(new ArrayList<>(statements.subList(1, size))));
     }
 }
