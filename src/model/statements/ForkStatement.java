@@ -1,5 +1,6 @@
 package model.statements;
 
+import javafx.util.Pair;
 import model.ProgramState;
 import model.types.Type;
 import model.values.StringValue;
@@ -13,6 +14,7 @@ import utils.collections.stack.IMyStack;
 import utils.collections.stack.MyStack;
 
 import java.io.BufferedReader;
+import java.util.List;
 
 public class ForkStatement implements Statement {
 
@@ -37,8 +39,9 @@ public class ForkStatement implements Statement {
         IMyList<Value> output = state.getOutput();
         IMyMap<StringValue, BufferedReader> fileTable = state.getFileTable();
         IMyHeap<Integer, Value> heap = state.getHeap();
+        IMyMap<Integer, Pair<Integer, List<Integer>>> semaphoreTable = state.getSemaphoreTable();
 
-        return new ProgramState(executionStack, symbolsTable, output, fileTable, heap, this.statement);
+        return new ProgramState(executionStack, symbolsTable, output, fileTable, heap, semaphoreTable, this.statement);
     }
 
     @Override

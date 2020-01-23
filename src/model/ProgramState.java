@@ -1,5 +1,6 @@
 package model;
 
+import javafx.util.Pair;
 import model.values.StringValue;
 import model.values.Value;
 import model.statements.Statement;
@@ -11,6 +12,7 @@ import utils.collections.stack.IMyStack;
 import utils.exceptions.NoMoreStatementsError;
 
 import java.io.BufferedReader;
+import java.util.List;
 
 public class ProgramState {
 
@@ -21,15 +23,17 @@ public class ProgramState {
     private IMyList<Value> output;
     private IMyMap<StringValue, BufferedReader> fileTable;
     private IMyHeap<Integer, Value> heap;
+    private IMyMap<Integer, Pair<Integer, List<Integer>>> semaphoreTable;
     private int id;
 
-    public ProgramState(IMyStack<Statement> statements, IMyMap<String, Value> symbols, IMyList<Value> output, IMyMap<StringValue, BufferedReader> fileTable, IMyHeap<Integer, Value> heap, Statement program) {
+    public ProgramState(IMyStack<Statement> statements, IMyMap<String, Value> symbols, IMyList<Value> output, IMyMap<StringValue, BufferedReader> fileTable, IMyHeap<Integer, Value> heap, IMyMap<Integer, Pair<Integer, List<Integer>>> semaphoreTable, Statement program) {
         this.executionStack = statements;
         this.symbolsTable = symbols;
         this.output = output;
         this.fileTable = fileTable;
         this.heap = heap;
         this.id = getNewId();
+        this.semaphoreTable = semaphoreTable;
         statements.push(program);
     }
 
@@ -84,6 +88,11 @@ public class ProgramState {
                 "OUTPUT:\n" + output.toString() + "\n" +
                 "FILE TABLE:\n" + (new MyList<>(fileTable.keySet())).toString() + "\n" +
                 "HEAP:\n" + heap.toString() + "\n" +
+                "SEMAPHORES TABLE:\n" + semaphoreTable.toString() + "\n" +
                 "\n";
+    }
+
+    public IMyMap<Integer, Pair<Integer, List<Integer>>> getSemaphoreTable() {
+        return semaphoreTable;
     }
 }

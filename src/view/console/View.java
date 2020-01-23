@@ -1,6 +1,7 @@
 package view.console;
 
 import controller.Controller;
+import javafx.util.Pair;
 import model.ProgramState;
 import resources.in.programs.HardCodedPrograms;
 import resources.in.programs.Programs;
@@ -17,6 +18,7 @@ import utils.collections.stack.IMyStack;
 import utils.collections.stack.MyStack;
 
 import java.io.BufferedReader;
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -39,7 +41,8 @@ public class View {
             IMyList<Value> output = new MyList<>();
             IMyMap<StringValue, BufferedReader> fileTable = new MyMap<>();
             IMyHeap<Integer, Value> heap = new MyHeap<>();
-            controller.addProgram(new ProgramState(statements, symbols, output, fileTable, heap, program));
+            IMyMap<Integer, Pair<Integer, List<Integer>>> semaphoreTable = new MyMap<>();
+            controller.addProgram(new ProgramState(statements, symbols, output, fileTable, heap, semaphoreTable, program));
             controller.allStep();
         } catch (Exception e) {
             System.out.println(e.getMessage());

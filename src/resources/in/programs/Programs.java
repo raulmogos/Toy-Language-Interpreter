@@ -7,18 +7,18 @@ import model.expressions.ArithmeticExpression;
 import model.expressions.VariableExpression;
 import model.expressions.ValueExpression;
 import model.types.RefType;
-import model.values.StringValue;
-import model.values.BoolValue;
+import model.values.*;
 import model.types.StringType;
-import model.values.IntValue;
 import model.types.BoolType;
 import model.types.IntType;
 import model.statements.*;
 
+import java.util.ArrayList;
+
 public class Programs {
 
     private static final String TOY_LANG_PATH_PREFIX = "src\\resources\\in\\toy_lang_files\\";
-    public static int NUMBER_OF_PROGRAMS = 12;
+    public static int NUMBER_OF_PROGRAMS = 13;
 
     // int v; v=2; PRINT(v)
     public static Statement program_1 = new CompoundStatement(
@@ -518,4 +518,59 @@ public class Programs {
                     )
             )
     );
+
+
+    public static Statement program_13 = HardCodedPrograms.createTreeStatement(
+            new ArrayList<>() {{
+                add(new VariableDeclarationStatement("v1", new RefType(new IntType())));
+                add(new VariableDeclarationStatement("cnt", new IntType()));
+                add(new NewStatement("v1", new ValueExpression(new IntValue(1))));
+                add(new CreateSemaphoreStatement("cnt", new ReadHeapExpression(new VariableExpression("v1"))));
+                add(new ForkStatement(
+                        HardCodedPrograms.createTreeStatement(
+                                new ArrayList<>() {{
+                                    add(new AcquireStatement("cnt"));
+                                    add(new WriteHeapStatement("v1", new ArithmeticExpression(
+                                                    ArithmeticExpression.Operations.MULTIPLICATION,
+                                                    new ValueExpression(new IntValue(10)),
+                                                    new ReadHeapExpression(new VariableExpression("v1"))
+                                            )
+                                    ));
+                                    add(new PrintStatement(new ReadHeapExpression(new VariableExpression("v1"))));
+                                    add(new ReleaseStatement("cnt"));
+                                }}
+                        ))
+                );
+                add(new ForkStatement(
+                        HardCodedPrograms.createTreeStatement(
+                                new ArrayList<>() {{
+                                    add(new AcquireStatement("cnt"));
+                                    add(new WriteHeapStatement("v1", new ArithmeticExpression(
+                                            ArithmeticExpression.Operations.MULTIPLICATION,
+                                            new ValueExpression(new IntValue(10)),
+                                            new ReadHeapExpression(new VariableExpression("v1"))
+                                        )
+                                    ));
+                                    add(new WriteHeapStatement("v1", new ArithmeticExpression(
+                                            ArithmeticExpression.Operations.MULTIPLICATION,
+                                            new ValueExpression(new IntValue(2)),
+                                            new ReadHeapExpression(new VariableExpression("v1"))
+                                        )
+                                    ));
+                                    add(new PrintStatement(new ReadHeapExpression(new VariableExpression("v1"))));
+                                    add(new ReleaseStatement("cnt"));
+                                }}
+                        ))
+                );
+                add(new AcquireStatement("cnt"));
+                add(new PrintStatement( new ArithmeticExpression(
+                        ArithmeticExpression.Operations.MINUS,
+                        new ReadHeapExpression(new VariableExpression("v1")),
+                        new ValueExpression(new IntValue(1))
+                    )
+                ));
+                add(new ReleaseStatement("cnt"));
+            }}
+    );
+
 }
