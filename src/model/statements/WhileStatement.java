@@ -7,6 +7,7 @@ import model.types.Type;
 import model.values.BoolValue;
 import model.values.Value;
 import syntax.Symbols;
+import utils.collections.map.IMyMap;
 import utils.exceptions.TypeError;
 
 public class WhileStatement implements Statement {
@@ -31,6 +32,15 @@ public class WhileStatement implements Statement {
             state.getExecutionStack().push(statement);
         }
         return null;
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type expressionType = expression.typeCheck(typeEnvironment);
+        if (!expressionType.equals(new BoolType())) {
+            throw new TypeError("The condition of WHILE has not the type bool");
+        }
+        return typeEnvironment;
     }
 
     @Override

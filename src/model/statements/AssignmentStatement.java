@@ -1,5 +1,6 @@
 package model.statements;
 
+import model.types.Type;
 import utils.exceptions.DoesNotExistError;
 import model.ProgramState;
 import model.expressions.Expression;
@@ -27,6 +28,16 @@ public class AssignmentStatement implements Statement {
                 oldValue.getType().toString() + " != " + newValue.getType().toString());
         symbolTable.put(symbol, newValue);
         return null;
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type variableType = typeEnvironment.get(symbol);
+        Type expressionType = expression.typeCheck(typeEnvironment);
+        if (!variableType.equals(expressionType)) {
+            throw new TypeError("Assignment Statement: right hand side and left hand side have different types.");
+        }
+        return typeEnvironment;
     }
 
     @Override

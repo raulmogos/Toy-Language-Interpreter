@@ -61,6 +61,20 @@ public class WriteHeapStatement implements Statement {
     }
 
     @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type expressionType = expression.typeCheck(typeEnvironment);
+        Type variableType = typeEnvironment.get(variableName);
+        if (!(variableType instanceof RefType)) {
+            throw new TypeError("WriteHeapStatement: should be a RefType");
+        }
+        RefType variableRefType = (RefType) variableType;
+        if (!variableRefType.getInnerType().equals(expressionType)) {
+            throw new TypeError("WriteHeapStatement: left and right types don't match");
+        }
+        return typeEnvironment;
+    }
+
+    @Override
     public String toString() {
         return Symbols.WRITE_HEAP + "(" + variableName + ", " + expression.toString() + ")";
     }

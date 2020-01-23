@@ -1,10 +1,12 @@
 package model.expressions;
 
 import model.types.IntType;
+import model.types.Type;
 import model.values.IntValue;
 import utils.collections.heap.IMyHeap;
 import utils.collections.map.IMyMap;
 import model.values.Value;
+import utils.collections.map.MyMap;
 import utils.exceptions.DivisionByZeroError;
 import utils.exceptions.TypeError;
 
@@ -53,6 +55,19 @@ public class ArithmeticExpression implements Expression {
             default:
                 throw new TypeError("invalid operation");
         }
+    }
+
+    @Override
+    public Type typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type typeFirstExpression = firstExpression.typeCheck(typeEnvironment);
+        Type typeSecondExpression = secondExpression.typeCheck(typeEnvironment);
+        if (!typeFirstExpression.equals(new IntType())) {
+            throw new TypeError("first operand is not an integer");
+        }
+        if (!typeSecondExpression.equals(new IntType())) {
+            throw new TypeError("second operand is not an integer");
+        }
+        return new IntType();
     }
 
     @Override

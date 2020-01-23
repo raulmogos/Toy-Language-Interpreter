@@ -2,6 +2,7 @@ package model.statements;
 
 import model.ProgramState;
 import model.expressions.Expression;
+import model.types.Type;
 import syntax.Symbols;
 import model.types.IntType;
 import model.types.StringType;
@@ -61,6 +62,19 @@ public class ReadFile implements Statement {
         }
 
         return null;
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        Type expressionType = expression.typeCheck(typeEnvironment);
+        Type variableType = typeEnvironment.get(variableName);
+        if (!variableType.equals(new IntType())) {
+            throw new TypeError("ReadFile: should be IntType");
+        }
+        if (!expressionType.equals(new StringType())) {
+            throw new TypeError("ReadFile: should be StringType");
+        }
+        return typeEnvironment;
     }
 
     @Override

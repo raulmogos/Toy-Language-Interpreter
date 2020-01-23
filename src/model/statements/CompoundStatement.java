@@ -1,6 +1,8 @@
 package model.statements;
 
 import model.ProgramState;
+import model.types.Type;
+import utils.collections.map.IMyMap;
 import utils.collections.stack.IMyStack;
 
 public class CompoundStatement implements Statement {
@@ -20,6 +22,11 @@ public class CompoundStatement implements Statement {
         stack.push(this.firstStatement);
 
         return null;
+    }
+
+    @Override
+    public IMyMap<String, Type> typeCheck(IMyMap<String, Type> typeEnvironment) {
+        return secondStatement.typeCheck(firstStatement.typeCheck(typeEnvironment));
     }
 
     @Override

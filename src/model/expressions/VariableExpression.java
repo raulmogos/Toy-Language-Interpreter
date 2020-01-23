@@ -1,8 +1,10 @@
 package model.expressions;
 
+import model.types.Type;
 import utils.collections.heap.IMyHeap;
 import utils.collections.map.IMyMap;
 import model.values.Value;
+import utils.collections.map.MyMap;
 import utils.exceptions.DoesNotExistError;
 
 public class VariableExpression implements Expression {
@@ -19,6 +21,11 @@ public class VariableExpression implements Expression {
             throw new DoesNotExistError(symbol + "does not exist");
         }
         return symbolsTable.get(symbol);
+    }
+
+    @Override
+    public Type typeCheck(IMyMap<String, Type> typeEnvironment) {
+        return typeEnvironment.get(symbol);
     }
 
     @Override
