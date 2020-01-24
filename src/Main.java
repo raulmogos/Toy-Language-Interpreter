@@ -169,6 +169,17 @@ public class Main {
         repo12.addProgramState(prg12);
         Controller ctr12 = new Controller(repo12);
 
+        Statement ex13 = Programs.program_13;
+        IMyStack<Statement> statements13 = new MyStack<>();
+        IMyMap<String, Value> symbols13 = new MyMap<>();
+        IMyList<Value> output13 = new MyList<>();
+        IMyMap<StringValue, BufferedReader> fileTable13 = new MyMap<>();
+        IMyHeap<Integer, Value> heap13 = new MyHeap<>();
+        ProgramState prg13 = new ProgramState(statements13, symbols13, output13, fileTable13, heap13, ex13);
+        IStateRepository repo13 = new StateRepository("log13.txt");
+        repo13.addProgramState(prg13);
+        Controller ctr13 = new Controller(repo13);
+
         // printing the type env
         for (int i = 1; i <= Programs.NUMBER_OF_PROGRAMS; i++) {
             MyMap<String, Type> typeEnv = new MyMap<>();
@@ -187,39 +198,43 @@ public class Main {
             }
         }
 
+
         // console ui
-        //TextMenu menu = new TextMenu();
-        //menu.addCommand(new ExitCommand("0", "exit"));
-        //menu.addCommand(new RunExample("1",ex1.toString(),ctr1));
-        //menu.addCommand(new RunExample("2",ex2.toString(),ctr2));
-        //menu.addCommand(new RunExample("3",ex3.toString(),ctr3));
-        //menu.addCommand(new RunExample("4",ex4.toString(),ctr4));
-        //menu.addCommand(new RunExample("5",ex5.toString(),ctr5));
-        //menu.addCommand(new RunExample("6",ex6.toString(),ctr6));
-        //menu.addCommand(new RunExample("7",ex7.toString(),ctr7));
-        //menu.addCommand(new RunExample("8",ex8.toString(),ctr8));
-        //menu.addCommand(new RunExample("9",ex9.toString(),ctr9));
-        //menu.addCommand(new RunExample("10",ex10.toString(),ctr10));
-        //menu.addCommand(new RunExample("11",ex11.toString(),ctr11));
-        //menu.addCommand(new RunExample("12",ex12.toString(),ctr12));
-        //menu.show();
+        TextMenu menu = new TextMenu();
+        menu.addCommand(new ExitCommand("0", "exit"));
+        menu.addCommand(new RunExample("1",ex1.toString(),ctr1));
+        menu.addCommand(new RunExample("2",ex2.toString(),ctr2));
+        menu.addCommand(new RunExample("3",ex3.toString(),ctr3));
+        menu.addCommand(new RunExample("4",ex4.toString(),ctr4));
+        menu.addCommand(new RunExample("5",ex5.toString(),ctr5));
+        menu.addCommand(new RunExample("6",ex6.toString(),ctr6));
+        menu.addCommand(new RunExample("7",ex7.toString(),ctr7));
+        menu.addCommand(new RunExample("8",ex8.toString(),ctr8));
+        menu.addCommand(new RunExample("9",ex9.toString(),ctr9));
+        menu.addCommand(new RunExample("10",ex10.toString(),ctr10));
+        menu.addCommand(new RunExample("11",ex11.toString(),ctr11));
+        menu.addCommand(new RunExample("12",ex12.toString(),ctr12));
+        menu.addCommand(new RunExample("13",ex13.toString(),ctr13));
+        menu.show();
 
-        MainWindow.addController("1", ex1.toString(), ctr1);
-        MainWindow.addController("2", ex2.toString(), ctr2);
-        MainWindow.addController("3", ex3.toString(), ctr3);
-        MainWindow.addController("4", ex4.toString(), ctr4);
-
-        MainWindow.addController("5", ex5.toString(), ctr5);
-        MainWindow.addController("6", ex6.toString(), ctr6);
-        MainWindow.addController("7", ex7.toString(), ctr7);
-        MainWindow.addController("8", ex8.toString(), ctr8);
-
-        MainWindow.addController("9", ex9.toString(), ctr9);
-        MainWindow.addController("10", ex10.toString(), ctr10);
-        MainWindow.addController("11", ex11.toString(), ctr11);
-        MainWindow.addController("12", ex12.toString(), ctr12);
-
-        MainWindow.launch(MainWindow.class, argv);
+//        MainWindow.addController("1", ex1.toString(), ctr1);
+//        MainWindow.addController("2", ex2.toString(), ctr2);
+//        MainWindow.addController("3", ex3.toString(), ctr3);
+//        MainWindow.addController("4", ex4.toString(), ctr4);
+//
+//        MainWindow.addController("5", ex5.toString(), ctr5);
+//        MainWindow.addController("6", ex6.toString(), ctr6);
+//        MainWindow.addController("7", ex7.toString(), ctr7);
+//        MainWindow.addController("8", ex8.toString(), ctr8);
+//
+//        MainWindow.addController("9", ex9.toString(), ctr9);
+//        MainWindow.addController("10", ex10.toString(), ctr10);
+//        MainWindow.addController("11", ex11.toString(), ctr11);
+//        MainWindow.addController("12", ex12.toString(), ctr12);
+//
+//        MainWindow.addController("13", ex13.toString(), ctr13);
+//
+//        MainWindow.launch(MainWindow.class, argv);
 
     }
 }

@@ -34,6 +34,8 @@ public class HardCodedPrograms {
                 return Programs.program_11;
             case 12:
                 return Programs.program_12;
+            case 13:
+                return Programs.program_13;
             default:
                 throw new RuntimeException("no index provided");
         }

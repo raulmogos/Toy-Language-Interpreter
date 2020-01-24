@@ -15,10 +15,12 @@ import model.types.BoolType;
 import model.types.IntType;
 import model.statements.*;
 
+import java.util.ArrayList;
+
 public class Programs {
 
     private static final String TOY_LANG_PATH_PREFIX = "src\\resources\\in\\toy_lang_files\\";
-    public static int NUMBER_OF_PROGRAMS = 12;
+    public static int NUMBER_OF_PROGRAMS = 13;
 
     // int v; v=2; PRINT(v)
     public static Statement program_1 = new CompoundStatement(
@@ -518,4 +520,35 @@ public class Programs {
                     )
             )
     );
+
+    //Ref int a; new(a,20);
+    //(for(v=0;v<3;v=v+1) fork(print(v);v=v*rh(a)));
+    //print(rh(a))
+    public static Statement program_13 = HardCodedPrograms.createTreeStatement(new ArrayList<>() {{
+                add(new VariableDeclarationStatement("a", new RefType(new IntType())));
+                add(new NewStatement("a", new ValueExpression(new IntValue(20))));
+                add(new ForStatement(
+                        new ValueExpression(new IntValue(0)),
+                        new ValueExpression(new IntValue(3)),
+                        new ArithmeticExpression(
+                                ArithmeticExpression.Operations.PLUS,
+                                new VariableExpression("v"),
+                                new ValueExpression(new IntValue(1))
+                        ),
+                        new ForkStatement(
+                                new CompoundStatement(
+                                        new PrintStatement(new VariableExpression("v")),
+                                        new AssignmentStatement(
+                                                "v",
+                                                new ArithmeticExpression(
+                                                        ArithmeticExpression.Operations.MULTIPLICATION,
+                                                        new VariableExpression("v"),
+                                                        new ReadHeapExpression(new VariableExpression("a"))
+                                                )
+                                                )
+                                )
+                        )
+                        ));
+                add(new PrintStatement(new ReadHeapExpression(new VariableExpression("a"))));
+            }});
 }

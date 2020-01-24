@@ -163,7 +163,7 @@ public class Controller {
         stateRepository.setProgramStatesList(programStateList);
 
         // we print the final result of each thread
-        completedPrograms.forEach(System.out::println);
+        // completedPrograms.forEach(System.out::println);
     }
 
     public void addProgram(ProgramState programState) {
