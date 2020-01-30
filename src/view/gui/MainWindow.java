@@ -26,6 +26,7 @@ public class MainWindow extends Application {
     private static TextArea heapText;
     private static TextArea symbolsText;
     private static TextArea FilesText;
+    private static TextArea LockTableText;
     private static Label labelSelectedProgramState;
 
     private static IdClass selectedProgramState;
@@ -69,6 +70,7 @@ public class MainWindow extends Application {
             this.updateHeapArea("");
             this.updateSymbolsArea("");
             this.updateFilesArea("");
+            this.updateLockTableArea("");
 
             this.updateProgramsStates(item);
         });
@@ -251,6 +253,22 @@ public class MainWindow extends Application {
         FilesText.setText(text);
     }
 
+    private VBox setUpLockTableArea() {
+        VBox layout = new VBox();
+
+        Label label = new Label("LockTable: ");
+        LockTableText = new TextArea();
+
+        layout.getChildren().add(label);
+        layout.getChildren().add(LockTableText);
+        return layout;
+    }
+
+    private void updateLockTableArea(String text) {
+        LockTableText.clear();
+        LockTableText.setText(text);
+    }
+
     private Label setUpProgramStateLabel() {
         labelSelectedProgramState = new Label();
         labelSelectedProgramState.setText("not selected");
@@ -269,6 +287,10 @@ public class MainWindow extends Application {
         // files area update
         String filesText = item.getController().getStateRepository().getFilesCurrentString();
         this.updateFilesArea(filesText);
+
+        // files locks update
+        String locksText = item.getController().getStateRepository().getLocksCurrentString();
+        this.updateLockTableArea(locksText);
 
         // update program states list
         this.updateProgramsStates(item);
@@ -299,6 +321,7 @@ public class MainWindow extends Application {
         layout.getChildren().add(horizontalBox);
 
         layout.getChildren().add(setUpAllStackArea());
+        layout.getChildren().add(setUpLockTableArea());
 
         HBox hBox1 = new HBox();
         hBox1.getChildren().add(setUpAllOutputArea());

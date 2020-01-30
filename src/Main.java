@@ -1,6 +1,4 @@
 import controller.Controller;
-import javafx.application.Application;
-import javafx.stage.Stage;
 import model.ProgramState;
 import model.types.Type;
 import resources.in.programs.HardCodedPrograms;
@@ -23,9 +21,7 @@ import view.console.commands.ExitCommand;
 import view.console.commands.RunExample;
 import view.gui.MainWindow;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.BufferedReader;
-import java.util.ArrayList;
 
 
 public class Main {
@@ -43,7 +39,8 @@ public class Main {
         IMyList<Value> output1 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable1 = new MyMap<>();
         IMyHeap<Integer, Value> heap1 = new MyHeap<>();
-        ProgramState prg1 = new ProgramState(statements1, symbols1, output1, fileTable1, heap1, ex1);
+        IMyHeap<Integer, Integer> lockTable1 = new MyHeap<>();
+        ProgramState prg1 = new ProgramState(statements1, symbols1, output1, fileTable1, heap1, lockTable1, ex1);
         IStateRepository repo1 = new StateRepository("log1.txt");
         repo1.addProgramState(prg1);
         Controller ctr1 = new Controller(repo1);
@@ -54,7 +51,8 @@ public class Main {
         IMyList<Value> output2 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable2 = new MyMap<>();
         IMyHeap<Integer, Value> heap2 = new MyHeap<>();
-        ProgramState prg2 = new ProgramState(statements2, symbols2, output2, fileTable2, heap2, ex2);
+        IMyHeap<Integer, Integer> lockTable2 = new MyHeap<>();
+        ProgramState prg2 = new ProgramState(statements2, symbols2, output2, fileTable2, heap2, lockTable2, ex2);
         IStateRepository repo2 = new StateRepository("log2.txt");
         repo2.addProgramState(prg2);
         Controller ctr2 = new Controller(repo2);
@@ -65,7 +63,8 @@ public class Main {
         IMyList<Value> output3 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable3 = new MyMap<>();
         IMyHeap<Integer, Value> heap3 = new MyHeap<>();
-        ProgramState prg3 = new ProgramState(statements3, symbols3, output3, fileTable3, heap3, ex3);
+        IMyHeap<Integer, Integer> lockTable3 = new MyHeap<>();
+        ProgramState prg3 = new ProgramState(statements3, symbols3, output3, fileTable3, heap3, lockTable3, ex3);
         IStateRepository repo3 = new StateRepository("log3.txt");
         repo3.addProgramState(prg3);
         Controller ctr3 = new Controller(repo3);
@@ -76,7 +75,8 @@ public class Main {
         IMyList<Value> output4 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable4 = new MyMap<>();
         IMyHeap<Integer, Value> heap4 = new MyHeap<>();
-        ProgramState prg4 = new ProgramState(statements4, symbols4, output4, fileTable4, heap4, ex4);
+        IMyHeap<Integer, Integer> lockTable4 = new MyHeap<>();
+        ProgramState prg4 = new ProgramState(statements4, symbols4, output4, fileTable4, heap4, lockTable4, ex4);
         IStateRepository repo4 = new StateRepository("log4.txt");
         repo4.addProgramState(prg4);
         Controller ctr4 = new Controller(repo4);
@@ -87,7 +87,8 @@ public class Main {
         IMyList<Value> output5 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable5 = new MyMap<>();
         IMyHeap<Integer, Value> heap5 = new MyHeap<>();
-        ProgramState prg5 = new ProgramState(statements5, symbols5, output5, fileTable5, heap5, ex5);
+        IMyHeap<Integer, Integer> lockTable5 = new MyHeap<>();
+        ProgramState prg5 = new ProgramState(statements5, symbols5, output5, fileTable5, heap5, lockTable5, ex5);
         IStateRepository repo5 = new StateRepository("log5.txt");
         repo5.addProgramState(prg5);
         Controller ctr5 = new Controller(repo5);
@@ -98,7 +99,8 @@ public class Main {
         IMyList<Value> output6 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable6 = new MyMap<>();
         IMyHeap<Integer, Value> heap6 = new MyHeap<>();
-        ProgramState prg6 = new ProgramState(statements6, symbols6, output6, fileTable6, heap6, ex6);
+        IMyHeap<Integer, Integer> lockTable6 = new MyHeap<>();
+        ProgramState prg6 = new ProgramState(statements6, symbols6, output6, fileTable6, heap6, lockTable6, ex6);
         IStateRepository repo6 = new StateRepository("log6.txt");
         repo6.addProgramState(prg6);
         Controller ctr6 = new Controller(repo6);
@@ -109,7 +111,8 @@ public class Main {
         IMyList<Value> output7 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable7 = new MyMap<>();
         IMyHeap<Integer, Value> heap7 = new MyHeap<>();
-        ProgramState prg7 = new ProgramState(statements7, symbols7, output7, fileTable7, heap7, ex7);
+        IMyHeap<Integer, Integer> lockTable7 = new MyHeap<>();
+        ProgramState prg7 = new ProgramState(statements7, symbols7, output7, fileTable7, heap7, lockTable7, ex7);
         IStateRepository repo7 = new StateRepository("log7.txt");
         repo7.addProgramState(prg7);
         Controller ctr7 = new Controller(repo7);
@@ -120,7 +123,8 @@ public class Main {
         IMyList<Value> output8 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable8 = new MyMap<>();
         IMyHeap<Integer, Value> heap8 = new MyHeap<>();
-        ProgramState prg8 = new ProgramState(statements8, symbols8, output8, fileTable8, heap8, ex8);
+        IMyHeap<Integer, Integer> lockTable8 = new MyHeap<>();
+        ProgramState prg8 = new ProgramState(statements8, symbols8, output8, fileTable8, heap8, lockTable8, ex8);
         IStateRepository repo8 = new StateRepository("log8.txt");
         repo8.addProgramState(prg8);
         Controller ctr8 = new Controller(repo8);
@@ -131,7 +135,8 @@ public class Main {
         IMyList<Value> output9 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable9 = new MyMap<>();
         IMyHeap<Integer, Value> heap9 = new MyHeap<>();
-        ProgramState prg9 = new ProgramState(statements9, symbols9, output9, fileTable9, heap9, ex9);
+        IMyHeap<Integer, Integer> lockTable9 = new MyHeap<>();
+        ProgramState prg9 = new ProgramState(statements9, symbols9, output9, fileTable9, heap9, lockTable9, ex9);
         IStateRepository repo9 = new StateRepository("log9.txt");
         repo9.addProgramState(prg9);
         Controller ctr9 = new Controller(repo9);
@@ -142,7 +147,8 @@ public class Main {
         IMyList<Value> output10 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable10 = new MyMap<>();
         IMyHeap<Integer, Value> heap10 = new MyHeap<>();
-        ProgramState prg10 = new ProgramState(statements10, symbols10, output10, fileTable10, heap10, ex10);
+        IMyHeap<Integer, Integer> lockTable10 = new MyHeap<>();
+        ProgramState prg10 = new ProgramState(statements10, symbols10, output10, fileTable10, heap10, lockTable10, ex10);
         IStateRepository repo10 = new StateRepository("log10.txt");
         repo10.addProgramState(prg10);
         Controller ctr10 = new Controller(repo10);
@@ -153,7 +159,8 @@ public class Main {
         IMyList<Value> output11 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable11 = new MyMap<>();
         IMyHeap<Integer, Value> heap11 = new MyHeap<>();
-        ProgramState prg11 = new ProgramState(statements11, symbols11, output11, fileTable11, heap11, ex11);
+        IMyHeap<Integer, Integer> lockTable11 = new MyHeap<>();
+        ProgramState prg11 = new ProgramState(statements11, symbols11, output11, fileTable11, heap11, lockTable11, ex11);
         IStateRepository repo11 = new StateRepository("log11.txt");
         repo11.addProgramState(prg11);
         Controller ctr11 = new Controller(repo11);
@@ -164,7 +171,8 @@ public class Main {
         IMyList<Value> output12 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable12 = new MyMap<>();
         IMyHeap<Integer, Value> heap12 = new MyHeap<>();
-        ProgramState prg12 = new ProgramState(statements12, symbols12, output12, fileTable12, heap12, ex12);
+        IMyHeap<Integer, Integer> lockTable12 = new MyHeap<>();
+        ProgramState prg12 = new ProgramState(statements12, symbols12, output12, fileTable12, heap12, lockTable12, ex12);
         IStateRepository repo12 = new StateRepository("log12.txt");
         repo12.addProgramState(prg12);
         Controller ctr12 = new Controller(repo12);
@@ -175,10 +183,23 @@ public class Main {
         IMyList<Value> output13 = new MyList<>();
         IMyMap<StringValue, BufferedReader> fileTable13 = new MyMap<>();
         IMyHeap<Integer, Value> heap13 = new MyHeap<>();
-        ProgramState prg13 = new ProgramState(statements13, symbols13, output13, fileTable13, heap13, ex13);
+        IMyHeap<Integer, Integer> lockTable13 = new MyHeap<>();
+        ProgramState prg13 = new ProgramState(statements13, symbols13, output13, fileTable13, heap13, lockTable13, ex13);
         IStateRepository repo13 = new StateRepository("log13.txt");
         repo13.addProgramState(prg13);
         Controller ctr13 = new Controller(repo13);
+
+        Statement ex14 = Programs.program_14;
+        IMyStack<Statement> statements14 = new MyStack<>();
+        IMyMap<String, Value> symbols14 = new MyMap<>();
+        IMyList<Value> output14 = new MyList<>();
+        IMyMap<StringValue, BufferedReader> fileTable14 = new MyMap<>();
+        IMyHeap<Integer, Value> heap14 = new MyHeap<>();
+        IMyHeap<Integer, Integer> lockTable14 = new MyHeap<>();
+        ProgramState prg14 = new ProgramState(statements14, symbols14, output14, fileTable14, heap14, lockTable14, ex14);
+        IStateRepository repo14 = new StateRepository("log14.txt");
+        repo14.addProgramState(prg14);
+        Controller ctr14 = new Controller(repo14);
 
         // printing the type env
         for (int i = 1; i <= Programs.NUMBER_OF_PROGRAMS; i++) {
@@ -199,42 +220,46 @@ public class Main {
         }
 
 
-        // console ui
-        TextMenu menu = new TextMenu();
-        menu.addCommand(new ExitCommand("0", "exit"));
-        menu.addCommand(new RunExample("1",ex1.toString(),ctr1));
-        menu.addCommand(new RunExample("2",ex2.toString(),ctr2));
-        menu.addCommand(new RunExample("3",ex3.toString(),ctr3));
-        menu.addCommand(new RunExample("4",ex4.toString(),ctr4));
-        menu.addCommand(new RunExample("5",ex5.toString(),ctr5));
-        menu.addCommand(new RunExample("6",ex6.toString(),ctr6));
-        menu.addCommand(new RunExample("7",ex7.toString(),ctr7));
-        menu.addCommand(new RunExample("8",ex8.toString(),ctr8));
-        menu.addCommand(new RunExample("9",ex9.toString(),ctr9));
-        menu.addCommand(new RunExample("10",ex10.toString(),ctr10));
-        menu.addCommand(new RunExample("11",ex11.toString(),ctr11));
-        menu.addCommand(new RunExample("12",ex12.toString(),ctr12));
-        menu.addCommand(new RunExample("13",ex13.toString(),ctr13));
-        menu.show();
+//        // console ui
+//        TextMenu menu = new TextMenu();
+//        menu.addCommand(new ExitCommand("0", "exit"));
+//        menu.addCommand(new RunExample("1",ex1.toString(),ctr1));
+//        menu.addCommand(new RunExample("2",ex2.toString(),ctr2));
+//        menu.addCommand(new RunExample("3",ex3.toString(),ctr3));
+//        menu.addCommand(new RunExample("4",ex4.toString(),ctr4));
+//        menu.addCommand(new RunExample("5",ex5.toString(),ctr5));
+//        menu.addCommand(new RunExample("6",ex6.toString(),ctr6));
+//        menu.addCommand(new RunExample("7",ex7.toString(),ctr7));
+//        menu.addCommand(new RunExample("8",ex8.toString(),ctr8));
+//        menu.addCommand(new RunExample("9",ex9.toString(),ctr9));
+//        menu.addCommand(new RunExample("10",ex10.toString(),ctr10));
+//        menu.addCommand(new RunExample("11",ex11.toString(),ctr11));
+//        menu.addCommand(new RunExample("12",ex12.toString(),ctr12));
+//        menu.addCommand(new RunExample("13",ex13.toString(),ctr13));
+//        menu.addCommand(new RunExample("14",ex14.toString(),ctr14));
+//        menu.show();
 
-//        MainWindow.addController("1", ex1.toString(), ctr1);
-//        MainWindow.addController("2", ex2.toString(), ctr2);
-//        MainWindow.addController("3", ex3.toString(), ctr3);
-//        MainWindow.addController("4", ex4.toString(), ctr4);
-//
-//        MainWindow.addController("5", ex5.toString(), ctr5);
-//        MainWindow.addController("6", ex6.toString(), ctr6);
-//        MainWindow.addController("7", ex7.toString(), ctr7);
-//        MainWindow.addController("8", ex8.toString(), ctr8);
-//
-//        MainWindow.addController("9", ex9.toString(), ctr9);
-//        MainWindow.addController("10", ex10.toString(), ctr10);
-//        MainWindow.addController("11", ex11.toString(), ctr11);
-//        MainWindow.addController("12", ex12.toString(), ctr12);
-//
-//        MainWindow.addController("13", ex13.toString(), ctr13);
-//
-//        MainWindow.launch(MainWindow.class, argv);
+        System.out.println(Programs.program_14);
+
+        MainWindow.addController("1", ex1.toString(), ctr1);
+        MainWindow.addController("2", ex2.toString(), ctr2);
+        MainWindow.addController("3", ex3.toString(), ctr3);
+        MainWindow.addController("4", ex4.toString(), ctr4);
+
+        MainWindow.addController("5", ex5.toString(), ctr5);
+        MainWindow.addController("6", ex6.toString(), ctr6);
+        MainWindow.addController("7", ex7.toString(), ctr7);
+        MainWindow.addController("8", ex8.toString(), ctr8);
+
+        MainWindow.addController("9", ex9.toString(), ctr9);
+        MainWindow.addController("10", ex10.toString(), ctr10);
+        MainWindow.addController("11", ex11.toString(), ctr11);
+        MainWindow.addController("12", ex12.toString(), ctr12);
+
+        MainWindow.addController("13", ex13.toString(), ctr13);
+        MainWindow.addController("14", ex14.toString(), ctr14);
+
+        MainWindow.launch(MainWindow.class, argv);
 
     }
 }

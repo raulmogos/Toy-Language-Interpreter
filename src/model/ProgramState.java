@@ -10,6 +10,7 @@ import utils.collections.list.IMyList;
 import utils.collections.stack.IMyStack;
 import utils.exceptions.NoMoreStatementsError;
 
+import java.awt.*;
 import java.io.BufferedReader;
 
 public class ProgramState {
@@ -21,14 +22,16 @@ public class ProgramState {
     private IMyList<Value> output;
     private IMyMap<StringValue, BufferedReader> fileTable;
     private IMyHeap<Integer, Value> heap;
+    private IMyHeap<Integer, Integer> lockTable;
     private int id;
 
-    public ProgramState(IMyStack<Statement> statements, IMyMap<String, Value> symbols, IMyList<Value> output, IMyMap<StringValue, BufferedReader> fileTable, IMyHeap<Integer, Value> heap, Statement program) {
+    public ProgramState(IMyStack<Statement> statements, IMyMap<String, Value> symbols, IMyList<Value> output, IMyMap<StringValue, BufferedReader> fileTable, IMyHeap<Integer, Value> heap, IMyHeap<Integer, Integer> lockTable, Statement program) {
         this.executionStack = statements;
         this.symbolsTable = symbols;
         this.output = output;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.lockTable = lockTable;
         this.id = getNewId();
         statements.push(program);
     }
@@ -44,6 +47,10 @@ public class ProgramState {
 
     public IMyMap<String, Value> getSymbolsTable() {
         return symbolsTable;
+    }
+
+    public IMyHeap<Integer, Integer> getLockTable() {
+        return lockTable;
     }
 
     public IMyList<Value> getOutput() {
@@ -84,6 +91,7 @@ public class ProgramState {
                 "OUTPUT:\n" + output.toString() + "\n" +
                 "FILE TABLE:\n" + (new MyList<>(fileTable.keySet())).toString() + "\n" +
                 "HEAP:\n" + heap.toString() + "\n" +
+                "LOCK TABLE:\n" + lockTable.toString() + "\n" +
                 "\n";
     }
 }

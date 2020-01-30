@@ -37,8 +37,9 @@ public class ForkStatement implements Statement {
         IMyList<Value> output = state.getOutput();
         IMyMap<StringValue, BufferedReader> fileTable = state.getFileTable();
         IMyHeap<Integer, Value> heap = state.getHeap();
+        IMyHeap<Integer, Integer> lockTable = state.getLockTable();
 
-        return new ProgramState(executionStack, symbolsTable, output, fileTable, heap, this.statement);
+        return new ProgramState(executionStack, symbolsTable, output, fileTable, heap, lockTable, this.statement);
     }
 
     @Override

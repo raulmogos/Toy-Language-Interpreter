@@ -15,12 +15,13 @@ import model.types.BoolType;
 import model.types.IntType;
 import model.statements.*;
 
+import java.lang.management.LockInfo;
 import java.util.ArrayList;
 
 public class Programs {
 
     private static final String TOY_LANG_PATH_PREFIX = "src\\resources\\in\\toy_lang_files\\";
-    public static int NUMBER_OF_PROGRAMS = 13;
+    public static int NUMBER_OF_PROGRAMS = 14;
 
     // int v; v=2; PRINT(v)
     public static Statement program_1 = new CompoundStatement(
@@ -551,4 +552,114 @@ public class Programs {
                         ));
                 add(new PrintStatement(new ReadHeapExpression(new VariableExpression("a"))));
             }});
+
+    //Ref int v1; Ref int v2; int x; int q;
+    //new(v1,20);new(v2,30);newLock(x);
+    //fork(
+    // fork(
+    // lock(x);wh(v1,rh(v1)-1);unlock(x)
+    // );
+    // lock(x);wh(v1,rh(v1)*10);unlock(x)
+    //);newLock(q);
+    //fork(
+    // fork(lock(q);wh(v2,rh(v2)+5);unlock(q));
+    // lock(q);wh(v2,rh(v2)*10);unlock(q)
+    //);
+    //nop;nop;nop;nop;
+    //lock(x); print(rh(v1)); unlock(x);
+    //lock(q); print(rh(v2)); unlock(q);
+    public static Statement program_14 = HardCodedPrograms.createTreeStatement(new ArrayList<>() {{
+            add(new VariableDeclarationStatement("v1", new RefType(new IntType())));
+            add(new VariableDeclarationStatement("v2", new RefType(new IntType())));
+            add(new VariableDeclarationStatement("x", new IntType()));
+            add(new VariableDeclarationStatement("q", new IntType()));
+
+            add(new NewStatement("v1", new ValueExpression(new IntValue(20))));
+            add(new NewStatement("v2", new ValueExpression(new IntValue(30))));
+            add(new NewLockStatement("x"));
+
+            add(new ForkStatement(
+                    new CompoundStatement(
+                            new ForkStatement(
+                                    // lock(x);wh(v1,rh(v1)-1);unlock(x)
+                                    HardCodedPrograms.createTreeStatement(new ArrayList<>() {{
+                                        add(new LockStatement("x"));
+                                        add(new WriteHeapStatement(
+                                                "v1",
+                                                new ArithmeticExpression(
+                                                        ArithmeticExpression.Operations.MINUS,
+                                                        new ReadHeapExpression(new VariableExpression("v1")),
+                                                        new ValueExpression(new IntValue(1))
+                                                )
+                                                ));
+                                        add(new UnlockStatement("x"));
+                                    }})
+                            ),
+                            // lock(x);wh(v1,rh(v1)*10);unlock(x)
+                            HardCodedPrograms.createTreeStatement(new ArrayList<>() {{
+                                add(new LockStatement("x"));
+                                add(new WriteHeapStatement(
+                                        "v1",
+                                        new ArithmeticExpression(
+                                                ArithmeticExpression.Operations.MULTIPLICATION,
+                                                new ValueExpression(new IntValue(10)),
+                                                new ReadHeapExpression(new VariableExpression("v1"))
+                                        )
+                                ));
+                                add(new UnlockStatement("x"));
+                                }}
+                            )
+                    )
+            ));
+            add(new NewLockStatement("q"));
+            add(new ForkStatement(
+                    new CompoundStatement(
+                            new ForkStatement(
+                                    // lock(q);wh(v2,rh(v2)+5);unlock(q)
+                                    HardCodedPrograms.createTreeStatement(new ArrayList<>() {{
+                                        add(new LockStatement("q"));
+                                        add(new WriteHeapStatement(
+                                                "v2",
+                                                new ArithmeticExpression(
+                                                        ArithmeticExpression.Operations.PLUS,
+                                                        new ReadHeapExpression(new VariableExpression("v2")),
+                                                        new ValueExpression(new IntValue(5))
+                                                )
+                                        ));
+                                        add(new UnlockStatement("q"));
+                                    }})
+                            ),
+                            //lock(q);wh(v2,rh(v2)*10);unlock(q)
+                            HardCodedPrograms.createTreeStatement(new ArrayList<>() {{
+                                  add(new LockStatement("q"));
+                                  add(new WriteHeapStatement(
+                                          "v2",
+                                          new ArithmeticExpression(
+                                                  ArithmeticExpression.Operations.MULTIPLICATION,
+                                                  new ValueExpression(new IntValue(10)),
+                                                  new ReadHeapExpression(new VariableExpression("v2"))
+                                          )
+                                  ));
+                                  add(new UnlockStatement("q"));
+                              }}
+                            )
+                    )
+            ));
+            add(new NopStatement());
+            add(new NopStatement());
+            add(new NopStatement());
+            add(new NopStatement());
+            // lock(x); print(rh(v1)); unlock(x);
+            add(HardCodedPrograms.createTreeStatement(new ArrayList<>() {{
+                add(new LockStatement("x"));
+                add(new PrintStatement(new ReadHeapExpression(new VariableExpression("v1"))));
+                add(new UnlockStatement("x"));
+            }}));
+            // lock(q); print(rh(v2)); unlock(q);
+            add(HardCodedPrograms.createTreeStatement(new ArrayList<>() {{
+                add(new LockStatement("q"));
+                add(new PrintStatement(new ReadHeapExpression(new VariableExpression("v2"))));
+                add(new UnlockStatement("q"));
+            }}));
+        }});
 }

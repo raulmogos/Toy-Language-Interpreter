@@ -39,7 +39,8 @@ public class View {
             IMyList<Value> output = new MyList<>();
             IMyMap<StringValue, BufferedReader> fileTable = new MyMap<>();
             IMyHeap<Integer, Value> heap = new MyHeap<>();
-            controller.addProgram(new ProgramState(statements, symbols, output, fileTable, heap, program));
+            IMyHeap<Integer, Integer> lockTable = new MyHeap<>();
+            controller.addProgram(new ProgramState(statements, symbols, output, fileTable, heap, lockTable, program));
             controller.allStep();
         } catch (Exception e) {
             System.out.println(e.getMessage());

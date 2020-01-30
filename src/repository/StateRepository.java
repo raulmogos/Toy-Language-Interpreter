@@ -25,6 +25,7 @@ public class StateRepository implements IStateRepository {
     private HashMap<Integer, String> symbolsCurrentStringMap;
 
     private String filesCurrentString;
+    private String locksCurrentString;
 
     public StateRepository(String logFilePath) {
         states = new ArrayList<>();
@@ -107,6 +108,7 @@ public class StateRepository implements IStateRepository {
         heapCurrentString = states.size() != 0 ? states.get(0).getHeap().toString() : "";
         states.forEach(s -> symbolsCurrentStringMap.put(s.getId(), s.getSymbolsTable().toString()));
         filesCurrentString = states.size() != 0 ? states.get(0).getFileTable().toString() : "";
+        locksCurrentString = states.size() != 0 ? states.get(0).getLockTable().toString() : "";
     }
 
     public String getOutputCurrentString() {
@@ -131,5 +133,9 @@ public class StateRepository implements IStateRepository {
 
     public String getFilesCurrentString() {
         return filesCurrentString;
+    }
+
+    public String getLocksCurrentString() {
+        return locksCurrentString;
     }
 }

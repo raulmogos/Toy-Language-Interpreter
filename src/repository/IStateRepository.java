@@ -19,4 +19,5 @@ public interface IStateRepository {
     public String getSymbolsCurrentString(int id);
     public String getCodeCurrentString();
     public String getFilesCurrentString();
+    public String getLocksCurrentString();
 }
